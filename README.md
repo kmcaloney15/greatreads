@@ -1,17 +1,17 @@
-# Title: GreatReads
+# GreatReads
 
 ## Premise: 
 
 This project is modeled after GoodReads, a blog site that allows users to review books that they have read and add them to their own digital bookshelf.
 
 
-## The User Story:
+## User Story:
 
 - Users should be able to create their own profiles where they can add books to their bookshelves and review them.
 - Users should also be able to view the individual book pages to read reviews and ratings.
 
 
-## The Wireframes:
+## Wireframes:
  
 ![Login Page](./img/wireframe-login.png)
 Concept idea for the login/welcome page.
