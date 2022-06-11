@@ -33,18 +33,43 @@ router.use((req, res, next) => {
 router.get("/seed", (req, res) => {
   // array of starter fruits
   const startBooks = [
-    { name: "Orange", color: "orange", readyToEat: false },
-    { name: "Grape", color: "purple", readyToEat: false },
-    { name: "Banana", color: "orange", readyToEat: false },
-    { name: "Strawberry", color: "red", readyToEat: false },
-    { name: "Coconut", color: "brown", readyToEat: false },
+    { 
+        title: "Orange", 
+        author: "orange", 
+        series: " ",
+        // review: [] 
+    },
+    { 
+        title: "Grape", 
+        author: "purple", 
+        series: " ",
+        // review: false 
+    },
+    { 
+        title: "Banana", 
+        author: "orange", 
+        series: " ",
+        // review: false 
+    },
+    { 
+        name: "Strawberry", 
+        author: "red", 
+        series: " ",
+        // review: false 
+    },
+    { 
+        name: "Coconut", 
+        author: "brown", 
+        series: " ",
+        // review: false 
+    },
   ];
 
   // Delete all books
   Book.deleteMany({}).then((data) => {
-    // Seed Starter Fruits
-    Book.create(startFruits).then((data) => {
-      // send created fruits as response to confirm creation
+    // Seed Starter Books
+    Book.create(startBooks).then((data) => {
+      // send created books as response to confirm creation
       res.json(data); //returning json data on route page
     });
   });
