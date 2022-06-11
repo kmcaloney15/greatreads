@@ -19,6 +19,7 @@ const { Schema, model } = mongoose;
 const booksSchema = new Schema({
   title: String,
   author: String,
+  hasRead: Boolean,
   review: ([String]),
 });
 
