@@ -22,7 +22,7 @@ const reviewSchema = new Schema({
   rating: Number,
 });
 
-// make fruit model
+// make review model
 const Review = model("Review", reviewSchema);
 
 

@@ -20,7 +20,7 @@ const booksSchema = new Schema({
   title: String,
   author: String,
   hasRead: Boolean,
-  review: ([String]),
+  review: ([String]), //reference to the review model
 });
 
 // make book model
