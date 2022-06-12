@@ -75,7 +75,23 @@ router.get("/seed", (req, res) => {
   });
 });
 
+// Index Route / The Async/Await Method
 
+// index route / will only show the loggin in user fruits
+router.get("/", (req, res) => {
+    // find all the fruits
+    Book.find({ username: req.session.username })
+      // render a template after they are found
+      .then((books) => {
+        console.log(books);
+        res.render("books/index.liquid", { books });
+      })
+      // send error as json if they aren't
+      .catch((error) => {
+        console.log(error);
+        res.json({ error });
+      });
+  });
 
 
 
