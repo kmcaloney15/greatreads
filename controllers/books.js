@@ -28,54 +28,6 @@ const router = express.Router();
 // Routes - all books routes specifically
 /////////////////////////////////////////
 
-// //SEED
-// //any time you go to this link, it will delete all data and then add in only the data listed below
-// //used to test that database is working without having to create new create page, add in data and then test
-router.get("/seed", (req, res) => {
-  // array of starter fruits
-  const startBooks = [
-    { 
-        title: "Little Women", 
-        author: "Lousia May Alcott", 
-        series: " ",
-        // review: [] 
-    },
-    { 
-        title: "Harry Potter and the Deathly Hallows", 
-        author: "J.K. Rowling", 
-        series: "Harry Potter",
-        // review: false 
-    },
-    { 
-        title: "The Hunger Games", 
-        author: "Suzanne Collins", 
-        series: "The Hunger Games",
-        // review: false 
-    },
-    { 
-        name: "A Game of Thrones", 
-        author: "George R.R. Martin", 
-        series: "A Song of Ice and Fire",
-        // review: false 
-    },
-    { 
-        name: "War and Peace", 
-        author: "Leo Tolstoy", 
-        series: "Classics",
-        // review: false 
-    },
-  ];
-
-  // Delete all books
-  Book.deleteMany({}).then((data) => {
-    // Seed Starter Books
-    Book.create(startBooks).then((data) => {
-      // send created books as response to confirm creation
-      res.json(data); //returning json data on route page
-    });
-  });
-});
-
 // Index Route / The Async/Await Method
 // using this so I don't need to log in everytime
 router.get("/", async (req, res) => {

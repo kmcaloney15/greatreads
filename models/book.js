@@ -19,6 +19,7 @@ const { Schema, model } = mongoose;
 const booksSchema = new Schema({
   title: String,
   author: String,
+  series: String,
   hasRead: Boolean,
 //   review: [{ type: Schema.}], //reference to the review model
 });
