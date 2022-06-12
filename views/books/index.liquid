@@ -11,6 +11,13 @@
                     {% else %} 
                     Not Ripe 
                     {% endif %} {% endcomment %}
+                    <form action="/books" method="POST">
+                        Title: <input type="text" name="title"><br>
+                        Author: <input type="text" name="author"><br>
+                        Series: <input type="text" name="series"><br>
+
+                        {% comment %} Has Read: <input type="checkbox" name="readyToEat"><br> {% endcomment %}
+                    </form>
                 </h2>
                 </a>
             </article>
