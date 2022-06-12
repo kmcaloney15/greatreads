@@ -37,7 +37,6 @@ router.get("/", async (req, res) => {
     res.render("books/index.liquid", { books });
   });
 
-
 // index route / will only show the loggin in user fruits
 // router.get("/", (req, res) => {
 //     // find all the fruits
@@ -54,6 +53,20 @@ router.get("/", async (req, res) => {
 //       });
 //   });
 
+
+// NEW - Get // don't need here but will for reviews
+
+
+// DELETE - Delete
+
+
+// UPDATE - Put
+
+// CREATE - Post
+
+// EDIT - Get
+
+// SHOW - Show
 
 
 

@@ -1,0 +1,39 @@
+{% layout "layout.liquid" %} {% block content %}
+    <div>
+        
+        
+        <article>
+            <h2>{{ book.title }}</h2>
+           
+            <h3>{{ book.author }}</h3>
+            <h3>{{ book.series }}</h3>
+            
+            
+            <form action="/users/show" method="post">
+                <fieldset>
+                  {% comment %} <legend>New User</legend>
+                  <label>USERNAME: <input type="text" name="username" required /> </label> {% endcomment %}
+                  <label>
+                    READY TO EAT:<input type="checkbox" name="readyToEat" {% if
+                    fruit.readyToEat == true %} checked {% endif %} />
+                  </label>
+                  <input type="submit" value="Add to Library" />
+                </fieldset>
+            
+            
+            {% comment %} DO I WANT THIS ON USER PROFILE OR PAGE? {% endcomment %}
+            {% comment %}{{ book.title }} -
+             {% if hasRead == true %}
+            Already read this book
+            {% else %}
+            Have not read yet
+            {% endif %} {% endcomment %}
+            {% comment %} <h3>{{ book.review }}</h3> {% endcomment %}
+
+
+            {% comment %} <a href="/books/{{ book._id }}/edit"><button>Edit</button></a> {% endcomment %}
+               
+            <a href="/books/"><button>Back to Main</button></a>
+        </article>
+    </div>
+{% endblock %}
