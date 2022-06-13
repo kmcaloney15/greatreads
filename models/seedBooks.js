@@ -44,14 +44,14 @@ db.on("open", () => {
         // review: false 
     },
     { 
-        name: "A Game of Thrones", 
+        title: "A Game of Thrones", 
         author: "George R.R. Martin", 
         series: "A Song of Ice and Fire",
         image: "/img/books/got.jpg",
         // review: false 
     },
     { 
-        name: "War and Peace", 
+        title: "War and Peace", 
         author: "Leo Tolstoy", 
         series: "Classics",
         image: "/img/books/war-and-peace.jpeg",

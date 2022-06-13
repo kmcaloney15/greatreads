@@ -1,0 +1,24 @@
+{% layout "layout.liquid" %} 
+{% block content %}
+    <div>
+        <article>
+          <h1>User page</h1>
+          <div>
+          {{ user.username }} 
+        </div>
+            {% comment %} <h2>
+                {{ user.name }} -
+                
+                {% comment %} {% if readyToEat == true %}
+                Ready to Eat
+                {% else %}
+                Not Ready to Eat
+                {% endif %} 
+            </h2>{% endcomment %}
+        
+            {% comment %} <a href="/users/{{ users._id }}/edit"><button>Edit</button></a> {% endcomment %}
+               
+         {% comment %} <a href="/users/"><button>Back to Main Button</button></a>  {% endcomment %}
+        </article>
+    </div>
+{% endblock %}

@@ -13,7 +13,7 @@
                     Not Ripe 
                     {% endif %} {% endcomment %}
                     <form action="/books" method="POST">
-                        {{book.image}}
+                       <img src="{{book.image}}"></img>
                         <h6>{{book.title}}</h6>
                      
                         {% comment %} Has Read: <input type="checkbox" name="readyToEat"><br> {% endcomment %}

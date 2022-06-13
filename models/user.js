@@ -16,6 +16,7 @@ const userSchema = new Schema ({
     password: { type: String, required: true,},
     //want to display the books that they have read
     hasRead: Boolean,
+    // bookshelf: ,
 });
 
 // make user model

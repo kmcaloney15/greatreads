@@ -46,9 +46,9 @@ app.use("/books", BookRouter); //now has access to all routes in books.js and wi
 app.use("/users", UserRouter); // send all "/user" routes to user router
 
 
-app.get("/", (req, res) => {
-  res.render("index.liquid");
-});
+// app.get("/", (req, res) => {
+//   res.render("index.liquid");
+// });
 
 
 

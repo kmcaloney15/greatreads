@@ -88,12 +88,12 @@ router.get("/logout", (req, res) => {
 
 // Index Route / The Async/Await Method
 // using this so I don't need to log in everytime
-router.get("/users", async (req, res) => {
+router.get("/profile", async (req, res) => {
     //async looks for any kind of awaits - async knows it has to wait for await to finsh running before it will run it's function
     const users = await User.find({}); // books.find({}) takes a long time to run
     // await has it wait a second allowing books.find({}) to run before it runs allowing the data to be retrived from the database
-    res.render("users/index.liquid", { users });
-  });
+    res.render("users/profile", { users });
+});
 
 // index route / will only show the loggin in user books
 router.get("/", (req, res) => {
@@ -102,7 +102,7 @@ router.get("/", (req, res) => {
       // render a template after they are found
       .then((users) => {
         console.log(books);
-        res.render("users/index.liquid", { users });
+        res.render("users/profile.liquid", { users });
       })
       // send error as json if they aren't
       .catch((error) => {
@@ -126,21 +126,21 @@ router.get("/", (req, res) => {
 // EDIT - Get
 
 // SHOW - Show
-router.get("/:id", (req, res) => {
-    // get the id from params
-    const id = req.params.id;
+// router.get("/:id", (req, res) => {
+//     // get the id from params
+//     const id = req.params.id;
   
-    // find the particular user profile
-    User.findById(id)
-      .then((user) => {
-        // render the template with the data from the database
-        res.render("users/show.liquid", { user });
-      })
-      .catch((error) => {
-        console.log(error);
-        res.json({ error });
-      });
-  });
+//     // find the particular user profile
+//     User.findById(id)
+//       .then((user) => {
+//         // render the template with the data from the database
+//         res.render("/users/profile.liquid", { user });
+//       })
+//       .catch((error) => {
+//         console.log(error);
+//         res.json({ error });
+//       });
+//   });
   
 
 //////////////////////////////////////////
