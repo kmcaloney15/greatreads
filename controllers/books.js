@@ -32,14 +32,14 @@ const router = express.Router();
 // using this so I don't need to log in everytime
 router.get("/", async (req, res) => {
     //async looks for any kind of awaits - async knows it has to wait for await to finsh running before it will run it's function
-    const books = await Book.find({}); // Fruits.find({}) takes a long time to run
-    // await has it wait a second allowing Fruits.find({}) to run before it runs allowing the data to be retrived from the database
+    const books = await Book.find({}); // books.find({}) takes a long time to run
+    // await has it wait a second allowing books.find({}) to run before it runs allowing the data to be retrived from the database
     res.render("books/index.liquid", { books });
   });
 
-// index route / will only show the loggin in user fruits
+// index route / will only show the loggin in user books
 // router.get("/", (req, res) => {
-//     // find all the fruits
+//     // find all the books
 //     Book.find({ username: req.session.username })
 //       // render a template after they are found
 //       .then((books) => {
@@ -61,13 +61,44 @@ router.get("/", async (req, res) => {
 
 
 // UPDATE - Put
+router.put("/:id", (req, res) => {
+    // get the id from params
+    const id = req.params.id;
+    // check if the hasRead property should be true or false
+    req.body.hasRead = req.body.hasRead === "on" ? true : false;
+    // update the book
+    Book.findByIdAndUpdate(id, req.body, { new: true })
+      .then((book) => {
+        // redirect to main page after updating
+        res.redirect("/users");
+      })
+      // send error as json
+      .catch((error) => {
+        console.log(error);
+        res.json({ error });
+      });
+  });
 
 // CREATE - Post
 
 // EDIT - Get
 
 // SHOW - Show
-
+router.get("/:id", (req, res) => {
+    // get the id from params
+    const id = req.params.id;
+  
+    // find the particular book from the database
+    Book.findById(id)
+      .then((book) => {
+        // render the template with the data from the database
+        res.render("books/show.liquid", { book });
+      })
+      .catch((error) => {
+        console.log(error);
+        res.json({ error });
+      });
+  });
 
 
 

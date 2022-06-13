@@ -6,10 +6,9 @@ const express = require("express"); // import express
 const morgan = require("morgan"); //import morgan
 const methodOverride = require("method-override");
 const path = require("path");
-
-const BookRouter = require("./controllers/books.js")
-const UserRouter = require("./controllers/users.js")
-const session = require("express-session")
+const BookRouter = require("./controllers/books.js");
+const UserRouter = require("./controllers/users.js");
+const session = require("express-session");
 const MongoStore = require("connect-mongo"); //what connects to the mongo database
 
 

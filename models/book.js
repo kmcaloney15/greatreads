@@ -21,6 +21,7 @@ const booksSchema = new Schema({
   author: String,
   series: String,
   hasRead: Boolean,
+  library: Boolean,
 //   review: [{ type: Schema.}], //reference to the review model
 });
 

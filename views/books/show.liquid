@@ -10,15 +10,16 @@
             
             
             <form action="/users/show" method="post">
-                <fieldset>
-                  {% comment %} <legend>New User</legend>
-                  <label>USERNAME: <input type="text" name="username" required /> </label> {% endcomment %}
-                  <label>
-                    READY TO EAT:<input type="checkbox" name="readyToEat" {% if
-                    fruit.readyToEat == true %} checked {% endif %} />
-                  </label>
-                  <input type="submit" value="Add to Library" />
-                </fieldset>
+                {% comment %} <legend>New User</legend>
+                <label>USERNAME: <input type="text" name="username" required /> </label> {% endcomment %}
+                <label>
+                    Read:<input type="checkbox" name="hasRead" {% if
+                        book.hadRead == true %} checked {% endif %} />
+                    </label><br>
+                    <input type="submit" value="Add to Library"  {% if
+                        book.library == true %} submit {% endif %}/>
+                    {% comment %} <fieldset>
+                </fieldset> {% endcomment %}
             
             
             {% comment %} DO I WANT THIS ON USER PROFILE OR PAGE? {% endcomment %}
