@@ -18,6 +18,7 @@ const { Schema, model } = mongoose;
 // make books schema
 const booksSchema = new Schema({
   title: String,
+  image: String,
   author: String,
   series: String,
   hasRead: Boolean,

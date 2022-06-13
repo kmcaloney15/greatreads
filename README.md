@@ -37,6 +37,7 @@ My proposed ERD for the project *(entity relationship diagram)*
 - Css
 - Mongodb
 - Node.js
+- Express
 
 
 ## MVP Requirements:

@@ -65,7 +65,7 @@ router.put("/:id", (req, res) => {
     // get the id from params
     const id = req.params.id;
     // check if the hasRead property should be true or false
-    req.body.hasRead = req.body.hasRead === "on" ? true : false;
+    req.body.hasRead = req.body.hasRead === "on" ? true : false;v
     // update the book
     Book.findByIdAndUpdate(id, req.body, { new: true })
       .then((book) => {

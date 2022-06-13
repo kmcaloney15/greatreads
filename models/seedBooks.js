@@ -25,31 +25,36 @@ db.on("open", () => {
     { 
         title: "Little Women", 
         author: "Lousia May Alcott", 
-        series: " ",
+        series: "Classics",
+        image: "/img/books/little-women.jpg",
         // review: [] 
     },
     { 
         title: "Harry Potter and the Deathly Hallows", 
         author: "J.K. Rowling", 
         series: "Harry Potter",
+        image: "/img/books/hp-deathly-hallows.jpg",
         // review: false 
     },
     { 
         title: "The Hunger Games", 
         author: "Suzanne Collins", 
         series: "The Hunger Games",
+        image: "/img/books/hunger-games.jpg",
         // review: false 
     },
     { 
         name: "A Game of Thrones", 
         author: "George R.R. Martin", 
         series: "A Song of Ice and Fire",
+        image: "/img/books/got.jpg",
         // review: false 
     },
     { 
         name: "War and Peace", 
         author: "Leo Tolstoy", 
         series: "Classics",
+        image: "/img/books/little-women.jpg",
         // review: false 
     },
   ];

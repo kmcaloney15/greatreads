@@ -1,7 +1,9 @@
 {% layout "layout.liquid" %} {% block content %}
     <div>
         <article>
-            <h2>
+           User page
+           
+            {% comment %} <h2>
                 {{ user.name }} -
                 
                 {% comment %} {% if readyToEat == true %}
@@ -10,10 +12,10 @@
                 Not Ready to Eat
                 {% endif %} {% endcomment %}
             </h2>
-            {% comment %} <h3>{{ fruit.color }}</h3> {% endcomment %}
+        
             <a href="/users/{{ user._id }}/edit"><button>Edit</button></a>
                
-            <a href="/fruits/"><button>Back to Main</button></a>
+         <a href="/users/"><button>Back to Main Button</button></a> 
         </article>
     </div>
 {% endblock %}
