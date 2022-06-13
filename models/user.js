@@ -17,6 +17,7 @@ const userSchema = new Schema ({
     //want to display the books that they have read
     hasRead: Boolean,
     // bookshelf: ,
+    //reviews: ,
 });
 
 // make user model

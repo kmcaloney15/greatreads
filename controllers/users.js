@@ -46,37 +46,37 @@ router.get("/login", (req, res) => {
 });
 
 // // require login code
-router.post("/login", async (req, res) => {
-  // get the data from the request body
-  const { username, password } = req.body;
-  // search for the user
-  User.findOne({ username })
-    .then(async (user) => {
-      // check if user exists
-      if (user) { //if the user does exist, then we need to compare the password 
-        // compare password
-        const result = await bcrypt.compare(password, user.password); //compare will take password that recieved from req.body and compare to the user.password
-        if (result) {
-          // store some properties in the session object
-          req.session.username = username;
-          req.session.loggedIn = true;
-          // redirect to fruits page if successful
-          res.redirect("/books");
-        } else {
-          // error if password doesn't match
-          res.json({ error: "password doesn't match" });
-        }
-      } else {
-        // send error if user doesn't exist
-        res.json({ error: "user doesn't exist" });
-      }
-    })
-    .catch((error) => {
-      // send error as json
-      console.log(error);
-      res.json({ error });
-    });
-});
+// router.post("/login", async (req, res) => {
+//   // get the data from the request body
+//   const { username, password } = req.body;
+//   // search for the user
+//   User.findOne({ username })
+//     .then(async (user) => {
+//       // check if user exists
+//       if (user) { //if the user does exist, then we need to compare the password 
+//         // compare password
+//         const result = await bcrypt.compare(password, user.password); //compare will take password that recieved from req.body and compare to the user.password
+//         if (result) {
+//           // store some properties in the session object
+//           req.session.username = username;
+//           req.session.loggedIn = true;
+//           // redirect to fruits page if successful
+//           res.redirect("/books");
+//         } else {
+//           // error if password doesn't match
+//           res.json({ error: "password doesn't match" });
+//         }
+//       } else {
+//         // send error if user doesn't exist
+//         res.json({ error: "user doesn't exist" });
+//       }
+//     })
+//     .catch((error) => {
+//       // send error as json
+//       console.log(error);
+//       res.json({ error });
+//     });
+// });
 
 // how to destroy the session
 router.get("/logout", (req, res) => {
@@ -88,7 +88,7 @@ router.get("/logout", (req, res) => {
 
 // Index Route / The Async/Await Method
 // using this so I don't need to log in everytime
-router.get("/profile", async (req, res) => {
+router.get("/", async (req, res) => {
     //async looks for any kind of awaits - async knows it has to wait for await to finsh running before it will run it's function
     const users = await User.find({}); // books.find({}) takes a long time to run
     // await has it wait a second allowing books.find({}) to run before it runs allowing the data to be retrived from the database

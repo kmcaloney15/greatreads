@@ -4,7 +4,11 @@
         <article>
           <h1>User page</h1>
           <div>
-          {{ user.username }} 
+            username: 
+          {{ users.username }}
+          <br>
+          bookshelf:
+
         </div>
             {% comment %} <h2>
                 {{ user.name }} -
@@ -21,4 +25,5 @@
          {% comment %} <a href="/users/"><button>Back to Main Button</button></a>  {% endcomment %}
         </article>
     </div>
+    <br><br>
 {% endblock %}

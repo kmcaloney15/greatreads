@@ -38,20 +38,20 @@ router.get("/", async (req, res) => {
   });
 
 // index route / will only show the loggin in user books
-router.get("/", (req, res) => {
-    // find all the books
-    Book.find({ username: req.session.username })
-      // render a template after they are found
-      .then((books) => {
-        console.log(books);
-        res.render("books/index.liquid", { books });
-      })
-      // send error as json if they aren't
-      .catch((error) => {
-        console.log(error);
-        res.json({ error });
-      });
-  });
+// router.get("/", (req, res) => {
+//     // find all the books
+//     Book.find({ username: req.session.username })
+//       // render a template after they are found
+//       .then((books) => {
+//         console.log(books);
+//         res.render("books/index.liquid", { books });
+//       })
+//       // send error as json if they aren't
+//       .catch((error) => {
+//         console.log(error);
+//         res.json({ error });
+//       });
+//   });
 
 
 // NEW - Get // don't need here but will for reviews
