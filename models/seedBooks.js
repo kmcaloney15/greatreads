@@ -54,7 +54,7 @@ db.on("open", () => {
         name: "War and Peace", 
         author: "Leo Tolstoy", 
         series: "Classics",
-        image: "/img/books/little-women.jpg",
+        image: "/img/books/war-and-peace.jpeg",
         // review: false 
     },
   ];
