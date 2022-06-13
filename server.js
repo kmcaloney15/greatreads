@@ -6,8 +6,9 @@ const express = require("express"); // import express
 const morgan = require("morgan"); //import morgan
 const methodOverride = require("method-override");
 const path = require("path");
-const BookRouter = require("./controllers/books.js");
-const UserRouter = require("./controllers/users.js");
+const BookRouter = require("./controllers/books.js")
+const UserRouter = require("./controllers/users.js")
+const ReviewRouter = require("./controllers/reviews.js")
 const session = require("express-session");
 const MongoStore = require("connect-mongo"); //what connects to the mongo database
 
@@ -42,13 +43,14 @@ app.use(
 ////////////////////////////////////////////
 // Routes (Root Route)
 ////////////////////////////////////////////
-app.use("/books", BookRouter); //now has access to all routes in books.js and will put the /books in front of every route created within that router
-app.use("/users", UserRouter); // send all "/user" routes to user router
+app.use("/books", BookRouter) //now has access to all routes in books.js and will put the /books in front of every route created within that router
+app.use("/users", UserRouter) // send all "/user" routes to user router
+app.use("/reviews", ReviewRouter)
 
 
-// app.get("/", (req, res) => {
-//   res.render("index.liquid");
-// });
+app.get("/", (req, res) => {
+  res.render("index.liquid");
+});
 
 
 
