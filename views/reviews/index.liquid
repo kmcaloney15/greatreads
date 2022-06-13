@@ -1,0 +1,25 @@
+{% layout "layout.liquid" %} {% block content %}
+    <div>
+        {% comment %} <a href="/reviews/new"><button>Create A New Fruit</button></a> {% endcomment %}
+       <h1>Reviews</h1>
+
+        {% for review in reviews %}
+            <article>
+                <a href="/reviews/{{ review._id }}">
+                <h2>
+                </h2>
+                    {% comment %} {{review.name}} - {% if review.readyToEat == true %} Ripe 
+                    {% else %} 
+                    Not Ripe 
+                    {% endif %} {% endcomment %}
+                    <form action="/reviews" method="POST">
+                       <img src="{{review.image}}"></img>
+                        <h6>{{review.title}}</h6>
+                     
+                        {% comment %} Has Read: <input type="checkbox" name="readyToEat"><br> {% endcomment %}
+                    </form>
+                </a>
+            </article>
+        {% endfor %}
+    </div>
+{% endblock %}
