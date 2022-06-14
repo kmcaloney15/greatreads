@@ -35,11 +35,11 @@ router.get("/reviews", (req, res) => {
 // Index Route / The Async/Await Method
 // using this so I don't need to log in everytime
 router.get("/", async (req, res) => {
-    //async looks for any kind of awaits - async knows it has to wait for await to finsh running before it will run it's function
-    const reviews = await Review.find({}); // Reviews.find({}) takes a long time to run
-    // await has it wait a second allowing Reviews.find({}) to run before it runs allowing the data to be retrived from the database
-    res.render("reviews/index.liquid", { reviews });
-  });
+  //async looks for any kind of awaits - async knows it has to wait for await to finsh running before it will run it's function
+  const reviews = await Review.find({}); // Reviews.find({}) takes a long time to run
+  // await has it wait a second allowing Reviews.find({}) to run before it runs allowing the data to be retrived from the database
+  res.render("reviews/index.liquid", { reviews });
+});
 
 // index route / will only show the loggin in user Reviews
 // router.get("/", (req, res) => {
@@ -57,7 +57,6 @@ router.get("/", async (req, res) => {
 //       });
 //   });
 
-
 // NEW - Get
 //NEW ROUTE
 //need id for books
@@ -72,20 +71,23 @@ router.get("/:id/new", (req, res) => {
 // CREATE - Post
 // need to grab the id of the book, then find the book by req.params.id, in id then push review into books.reviews
 //create the route!!!
-Review.create(req.body)
-.then((newReview) => {
- Book.findByIdAndUpdate(id, {$push: { review: newReview}}) 
+router.post("/new", (req, res) => {
+  const id = req.params.id
+  Review.create(req.body)
+  //
+  .then((newReview) => {
+    Book.findByIdAndUpdate(id, { $push: { review: newReview } })
+  })
+  // send error as json
+  .catch((error) => {
+    console.log(error)
+    res.json({ error })
+  })
 })
 
 // EDIT - Get
 
 // SHOW - Show
-
-
-
-
-
-
 
 //////////////////////////////////////////
 // Export the Router
