@@ -2,27 +2,26 @@
     <div>
         {% comment %} <a href="/reviews/new"><button>Create A New Fruit</button></a> {% endcomment %}
         <h1 class="fw-bolder mb-1">Reviews</h1>
-
-        <textarea name="review[review]" class="textBox largeTextBox" id="" cols="30" rows="12" style="display: block; height: auto" placeholder="Enter your review here."></textarea>
-        {% comment %} {% for review in reviews %}
-            <article>
-                <a href="/reviews/{{ review._id }}">
-                
-                    Has Read: <input type="checkbox" name="readyToEat"><br>
-                    </form>
-                </a>
-            </article>
-        {% endfor %} {% endcomment %}
-
-        maybe try to use this logic (ejs) to 
-        <form id="add-per-to-cast" action="/movies/<%= movie._id%>/performers" method="POST">
-        <select name="performerId">
-          <%- performers.map(p => 
-            `<option value="${p._id}">${p.name}</option>`
-          ).join('') %>
-        </select>
-        <button type="submit">Add to Cast</button>
-      </form>
+    
+            {% for review in reviews %}
+                <article>
+                    <a href="/reviews/{{ review._id }}">
+                    <h2>
+                    </h2>
+                        {% comment %} {{book.name}} - {% if book.readyToEat == true %} Ripe 
+                        {% else %} 
+                        Not Ripe 
+                        {% endif %} {% endcomment %}
+                        <form action="/reviews" method="POST">
+                            <h6>{{review.rating}}</h6>
+                         
+                            {% comment %} Has Read: <input type="checkbox" name="readyToEat"><br> {% endcomment %}
+                        </form>
+                    </a>
+                </article>
+            {% endfor %}
+   
+   
 
 
 

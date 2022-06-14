@@ -1,18 +1,20 @@
 {% layout "layout.liquid" %} {% block content %}
     <div>
         {% comment %} <a href="/reviews/new"><button>Create A New Fruit</button></a> {% endcomment %}
-        <h1 class="fw-bolder mb-1">Reviews</h1>
-        <h6>What did you think?</h6>
-        <div class="review-textbox">
-            {% comment %} use onclick - can only use css and html - cannot do dom manipulation {% endcomment %}
-            <div class="stars" data-submit-url="review/rate=true">
-            Your rating:
-            </div>
-        <textarea name="review[review]" class="textBox largeTextBox" id="" cols="30" rows="12" style="display: block; height: auto" placeholder="Enter your review here.">
-        </textarea>
-        <input type="submit" value="Submit Review" class="btn btn-primary">
-        </div>
-
+        
+        <form action="/reviews" method="POST"></form>
+          <h1 class="fw-bolder mb-1">Reviews</h1>
+          <h6>What did you think?</h6>
+            <div class="review-textbox">
+                {% comment %} use onclick - can only use css and html - cannot do dom manipulation {% endcomment %}
+                <div class="stars" data-submit-url="review/rate=true">
+                Your rating:
+                </div>
+                  <textarea name="review[content]" class="textBox largeTextBox" id="" cols="30" rows="12" style="display: block; height: auto" placeholder="Enter your review here.">
+                  </textarea>
+                <input type="submit" value="Submit Review" class="btn btn-primary">
+              </div>
+        </form>
         {% comment %} {% for review in reviews %}
             <article>
                 <a href="/reviews/{{ review._id }}">

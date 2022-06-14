@@ -17,7 +17,7 @@ const { Schema, model } = mongoose;
 
 // make fruits schema
 const reviewSchema = new Schema({
-  name: String,
+  name: [{ type: Schema.Types.ObjectId, ref: "Book"}], //reference to the book model,
   content: String,
   rating: Number,
 });
