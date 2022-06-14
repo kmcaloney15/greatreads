@@ -59,7 +59,10 @@ router.get("/", async (req, res) => {
 
 
 // NEW - Get
-
+//NEW ROUTE
+router.get("/new", (req, res) => {
+  res.render("reviews/new");
+});
 
 // DELETE - Delete
 
