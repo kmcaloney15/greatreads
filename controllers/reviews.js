@@ -61,29 +61,13 @@ router.get("/", async (req, res) => {
 //NEW ROUTE
 //need id for books
 router.get("/:id/", (req, res) => {
-  res.render("reviews/index");
+  res.render("reviews/show");
 });
 
 // DELETE - Delete
 
 // UPDATE - Put
 
-// CREATE - Post
-// need to grab the id of the book, then find the book by req.params.id, in id then push review into books.reviews
-//create the route!!!
-router.post("/:id/new", (req, res) => {
-  const id = req.params.id;
-  Review.create(req.body)
-    //
-    .then((newReview) => {
-      Book.findByIdAndUpdate(id, { $push: { review: newReview } });
-    })
-    // send error as json
-    .catch((error) => {
-      console.log(error);
-      res.json({ error });
-    });
-});
 
 // EDIT - Get
 
@@ -98,6 +82,23 @@ router.get("/:id", (req, res) => {
       // render the template with the data from the database
       res.render("reviews/show.liquid", { reviews });
     })
+    .catch((error) => {
+      console.log(error);
+      res.json({ error });
+    });
+});
+
+// CREATE - Post
+// need to grab the id of the book, then find the book by req.params.id, in id then push review into books.reviews
+//create the route!!!
+router.post("/:id/new", (req, res) => {
+  const id = req.params.id;
+  Review.create(req.body)
+    //
+    .then((newReview) => {
+      Book.findByIdAndUpdate(id, { $push: { review: newReview } });
+    })
+    // send error as json
     .catch((error) => {
       console.log(error);
       res.json({ error });
