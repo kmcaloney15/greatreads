@@ -23,31 +23,36 @@ db.on("open", () => {
   // Run any database queries in this function
   const startReviews = [
     {     
-        name: "Little Women", 
+        title: "Little Women", 
+        username: "katy",
         content: "I would not want to live during that time period.", 
         rating: 3,
         // username: "/img/Reviews/little-women.jpg",
     },
     { 
-        name: "Harry Potter and the Deathly Hallows", 
+        title: "Harry Potter and the Deathly Hallows", 
+        username: "liz",
         content: "Can I go to Hogwarts?", 
         rating: 5,
         // username: "/img/Reviews/hp-deathly-hallows.jpg",
     },
     { 
-        name: "The Hunger Games", 
+        title: "The Hunger Games", 
+        username: "katy",
         content: "What a brutal world", 
         rating: 4,
         // username: "/img/Reviews/hunger-games.jpg",
     },
     { 
-        name: "A Game of Thrones", 
+        title: "A Game of Thrones", 
+        username: "jack",
         content: "It was a great book!", 
         rating: 5,
         // username: "/img/Reviews/got.jpg",
     },
     { 
-        name: "War and Peace", 
+        title: "War and Peace",
+        username: "katy", 
         content: "This was super long but I liked it", 
         rating: 5,
         // username: "/img/Reviews/war-and-peace.jpeg",

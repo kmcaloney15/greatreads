@@ -60,7 +60,7 @@ db.on("open", () => {
   ];
 
   // Delete all books
-  // Book.deleteMany({}).then((data) => {
+Book.deleteMany({}).then((data) => {
     // Seed Starter Books
     Book.create(startBooks)
     .then((data) => {
@@ -73,9 +73,13 @@ db.on("open", () => {
         console.log(error);
         db.close();
     })
-  // });
+ })
+ .catch((error) => {
+   console.log(error)
+   db.close()
+ })
 
   ///////////////////////////////////////////////
   // Write your Seed Code Above
   //////////////////////////////////////////////
-});
+})

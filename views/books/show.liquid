@@ -16,9 +16,10 @@
                     Read:<input type="checkbox" name="hasRead" {% if
                         book.hadRead == true %} checked {% endif %} />
                     </label><br>
-                    <a href="/reviews/new" type="button" class="btn btn-outline-primary">Add a Review</a>
+                    {% comment %} <a href="/reviews/new" type="button" class="btn btn-outline-primary">Add a Review</a> {% endcomment %}
+                    <a href="/reviews/{{ book.id }}/new" type="button" class="btn btn-outline-primary">Add a Review</a>
                     {% comment %} <input type="submit" value="Add a Review" href> {% endcomment %}
-                    <input type="submit" value="Add to Library" class="btn btn-primary"/>
+                    {% comment %} <input type="submit" value="Add to Library" class="btn btn-primary"/> {% endcomment %}
                     {% comment %} {% if book.library == true %} submit {% endif %} {% endcomment %}
                     {% comment %} <fieldset>
                 </fieldset> {% endcomment %}

@@ -57,25 +57,55 @@ router.get("/", async (req, res) => {
 //       });
 //   });
 
-// NEW - Get
-//NEW ROUTE
-//need id for books
-router.get("/:id/", (req, res) => {
-  res.render("reviews/show");
-});
+
 
 // DELETE - Delete
+router.delete("/:id", (req, res) => {
+  // get the id from params
+  const id = req.params.id;
+  // delete the fruit
+  Review.findByIdAndRemove(id)
+    .then((review) => {
+      // redirect to main page after deleting
+      res.redirect("/books");
+    })
+    // send error as json
+    .catch((error) => {
+      // console.log(error);
+      res.json({ error });
+    });
+});
 
 // UPDATE - Put
-
+//update route
+router.put("/:id", (req, res) => {
+  // get the id from params
+  const id = req.params.id;
+  // check if the readyToEat property should be true or false
+  req.body.hasRead = req.body.hasRead === "on" ? true : false;
+  // update the fruit
+  Review.findByIdAndUpdate(id, req.body, { new: true })
+    .then((review) => {
+      // redirect to main page after updating
+      res.redirect(`/users/${user._id}`);
+    })
+    // send error as json
+    .catch((error) => {
+      // console.log(error);
+      res.json({ error });
+    });
+});
 
 // EDIT - Get
 
 // SHOW - Show
-// show route
+// show the reviews
 router.get("/:id", (req, res) => {
+  const username = req.session.username;
   // get the id from params
   const id = req.params.id;
+  // console.log(id);
+  // console.log(req.body.reviews);
   // find the particular Review from the database
   Review.findById(id)
     .then((reviews) => {
@@ -83,27 +113,58 @@ router.get("/:id", (req, res) => {
       res.render("reviews/show.liquid", { reviews });
     })
     .catch((error) => {
-      console.log(error);
+      // console.log(error);
       res.json({ error });
     });
+});
+
+// NEW - Get
+//NEW ROUTE
+//need id for books
+router.get("/:id/new", (req, res) => {
+  let id = req.params.id
+  // console.log(id)
+  res.render("reviews/new", {
+    id
+  })
 });
 
 // CREATE - Post
 // need to grab the id of the book, then find the book by req.params.id, in id then push review into books.reviews
 //create the route!!!
-router.post("/:id/new", (req, res) => {
-  const id = req.params.id;
+router.post("/:id", (req, res) => {
+  // add username to req.body to track related user
+  req.body.username = req.session.username;
+  const id = req.params.id
+  console.log(id)
+  // let newReviews = {
+  //   reviewId: id,
+  //   username: req.session.username,
+  //   reviewBody: req.body.reviewBody,
+  //   rating: 0,
+  // }
   Review.create(req.body)
     //
     .then((newReview) => {
-      Book.findByIdAndUpdate(id, { $push: { review: newReview } });
+      // console.log(data)
+      Book.findByIdAndUpdate(id, { $push: { review: newReview._id } })
+      .then((review) => {
+        console.log(review)
+      })
+      // console.log(newReview)
+      // res.render("/show")
+    
     })
+    // User.findOneAndUpdate({username:username}, {$push: {review: newReview}})
+    // .then((user) => {
+    //   // console.log(user)
+    // })
     // send error as json
     .catch((error) => {
-      console.log(error);
-      res.json({ error });
-    });
-});
+      console.log(error)
+      res.json({ error })
+    })
+})
 
 //////////////////////////////////////////
 // Export the Router

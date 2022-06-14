@@ -86,18 +86,18 @@ router.put("/:id", (req, res) => {
 // SHOW - Show
 router.get("/:id", (req, res) => {
     // get the id from params
-    const id = req.params.id;
+    const id = req.params.id
   
     // find the particular book from the database
     Book.findById(id)
       .then((book) => {
         // render the template with the data from the database
-        res.render("books/show.liquid", { book });
+        res.render("books/show.liquid", { book })
       })
       .catch((error) => {
-        console.log(error);
-        res.json({ error });
-      });
+        console.log(error)
+        res.json({ error })
+      })
   });
 
 
