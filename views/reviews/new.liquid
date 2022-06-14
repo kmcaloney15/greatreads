@@ -2,8 +2,15 @@
     <div>
         {% comment %} <a href="/reviews/new"><button>Create A New Fruit</button></a> {% endcomment %}
         <h1 class="fw-bolder mb-1">Reviews</h1>
-
+        <h6>What did you think?</h6>
+        <div class="review-textbox">
+            {% comment %} use onclick - can only use css and html - cannot do dom manipulation {% endcomment %}
+            <div class="stars" data-submit-url="review/rate=true">
+            Your rating:
+            </div>
         <textarea name="review[review]" class="textBox largeTextBox" id="" cols="30" rows="12" style="display: block; height: auto" placeholder="Enter your review here."></textarea>
+        </div>
+
         {% comment %} {% for review in reviews %}
             <article>
                 <a href="/reviews/{{ review._id }}">
@@ -14,7 +21,7 @@
             </article>
         {% endfor %} {% endcomment %}
 
-        maybe try to use this logic (ejs) to 
+        {% comment %} maybe try to use this logic (ejs) to 
         <form id="add-per-to-cast" action="/movies/<%= movie._id%>/performers" method="POST">
         <select name="performerId">
           <%- performers.map(p => 
@@ -22,7 +29,7 @@
           ).join('') %>
         </select>
         <button type="submit">Add to Cast</button>
-      </form>
+      </form> {% endcomment %}
 
 
 

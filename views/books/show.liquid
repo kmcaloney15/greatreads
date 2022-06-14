@@ -16,8 +16,10 @@
                     Read:<input type="checkbox" name="hasRead" {% if
                         book.hadRead == true %} checked {% endif %} />
                     </label><br>
-                    <input type="submit" value="Add to Library"  {% if
-                        book.library == true %} submit {% endif %}/>
+                    <a href="/reviews/new" type="button" class="btn btn-outline-primary">Add a Review</a>
+                    {% comment %} <input type="submit" value="Add a Review" href> {% endcomment %}
+                    <input type="submit" value="Add to Library" class="btn btn-primary"/>
+                    {% comment %} {% if book.library == true %} submit {% endif %} {% endcomment %}
                     {% comment %} <fieldset>
                 </fieldset> {% endcomment %}
             
@@ -33,8 +35,9 @@
 
 
             {% comment %} <a href="/books/{{ book._id }}/edit"><button>Edit</button></a> {% endcomment %}
+            <br><br>
                
-            <a href="/books/"><button>Back to Main</button></a>
+            <a href="/books/" type="button" class="btn btn-primary">Back to Main</a>
         </article>
     </div>
 {% endblock %}

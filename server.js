@@ -18,8 +18,8 @@ const MongoStore = require("connect-mongo"); //what connects to the mongo databa
 /////////////////////////////////////////////////
 //didn't include app at the top since it's only used here
 const app = require("liquid-express-views")(express(), {
-  root: [path.resolve(__dirname, "views/")],
-});
+  root: [path.resolve(__dirname + "views/")],
+})
 
 /////////////////////////////////////////////////////
 // Middleware
@@ -49,7 +49,7 @@ app.use("/reviews", ReviewRouter)
 
 
 app.get("/", (req, res) => {
-  res.render("index.liquid");
+  res.render("home");
 });
 
 
