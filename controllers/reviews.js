@@ -60,7 +60,8 @@ router.get("/", async (req, res) => {
 
 // NEW - Get
 //NEW ROUTE
-router.get("/new", (req, res) => {
+//need id for books
+router.get("/:id/new", (req, res) => {
   res.render("reviews/new");
 });
 
@@ -69,6 +70,12 @@ router.get("/new", (req, res) => {
 // UPDATE - Put
 
 // CREATE - Post
+// need to grab the id of the book, then find the book by req.params.id, in id then push review into books.reviews
+//create the route!!!
+Review.create(req.body)
+.then((newReview) => {
+ Book.findByIdAndUpdate(id, {$push: { review: newReview}}) 
+})
 
 // EDIT - Get
 

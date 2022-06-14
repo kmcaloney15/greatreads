@@ -17,7 +17,7 @@ const userSchema = new Schema ({
     //want to display the books that they have read
     hasRead: Boolean,
     // bookshelf: ,
-    //reviews: ,
+    review: [{ type: Schema.Types.ObjectId, ref: "Review"}],
 });
 
 // make user model
