@@ -71,7 +71,7 @@ router.get("/:id/new", (req, res) => {
 // CREATE - Post
 // need to grab the id of the book, then find the book by req.params.id, in id then push review into books.reviews
 //create the route!!!
-router.post("/new", (req, res) => {
+router.post("/:id/new", (req, res) => {
   const id = req.params.id
   Review.create(req.body)
   //
@@ -88,6 +88,22 @@ router.post("/new", (req, res) => {
 // EDIT - Get
 
 // SHOW - Show
+// show route
+router.get("/:id", (req, res) => {
+  // get the id from params
+  const id = req.params.id;
+
+  // find the particular Review from the database
+  Review.findById(id)
+    .then((review) => {
+      // render the template with the data from the database
+      res.render("reviews/show.liquid", { review });
+    })
+    .catch((error) => {
+      console.log(error);
+      res.json({ error });
+    });
+});
 
 //////////////////////////////////////////
 // Export the Router
