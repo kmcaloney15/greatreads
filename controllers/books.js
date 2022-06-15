@@ -22,9 +22,9 @@ router.use((req, res, next) => {
   if (req.session.loggedIn) {
     next();
   } else {
-    res.redirect("/users/login");
+    res.redirect("/users/login")
   }
-});
+})
 
 /////////////////////////////////////////
 // Routes - all books routes specifically
@@ -76,45 +76,54 @@ router.put("/:id", (req, res) => {
     .catch((error) => {
       console.log(error)
       res.json({ error })
-    });
-});
+    })
+})
 
 // CREATE - Post
 
 // new review
-router.post("/:id/reviews", (req, res) => {
-  const username = req.session.username;
-  const id = req.params.id;
+router.post("/:id", (req, res) => {
+  // const username = req.session.username;
+  const id = req.params.id; //book id
+  // console.log("this is the " + id)
+  req.body.username = req.session.username
 
-  let newReview = {
-    reviewId: id,
-    reviewOwner: {
-      username: req.session.username,
-    },
-    reviewBody: req.body.reviewBody,
-    rating: 0,
-  };
-  User.findOne({ username: req.session.username })
-    .then((user) => {
-      // console.log(req.body)
-      Review.create(newReview)
-      .then((review) => {
-        Book.findByIdAndUpdate(id, { $push: { reviews: review._id } })
-        .then(
-          (book) => {
-            console.log(book, "this is a book");
-          })
-      })
-    })
-    .then((user) => {
-      console.log(user);
-    });
-  res.redirect("/books/:id")
-  .catch((error) => {
-    console.log(error);
-    res.json({ error });
-  });
-});
+  Book.findById(id)
+  .then(book => {
+    book.reviews.push(req.body)
+    return book.save()
+  })
+  .then(book => {
+    res.redirect(`/${id}`)
+  })
+
+  // let newReview = {
+  //   reviewId: id,
+  //   reviewOwner: {
+  //     username: req.session.username,
+  //   },
+  //   reviewBody: req.body.reviewBody,
+  //   rating: 0,
+  // };
+  // User.findOne({ username: req.session.username })
+  //   .then((user) => {
+  //     // console.log(req.body)
+  //     Book.findById(id)
+  //     .then((book) => {
+  //           console.log(book, "this is a book");
+  //        book.reviews.push(req.body)
+  //        book.save()
+  //         })
+  //     .then((book) => {
+  //       res.redirect(`/books/${id}`)
+  //     })
+  //   })
+// book.review.push - review body
+  // .catch((error) => {
+  //   // console.log(error)
+  //   res.json({ error })
+  // })
+})
 
 // router.post("/:id", (req, res) => {
 //   // add username to req.body to track related user

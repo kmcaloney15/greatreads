@@ -2,15 +2,15 @@
 // Import Our Dependencies
 /////////////////////////////////////////////
 require("dotenv").config(); // Load ENV Variables
-const express = require("express"); // import express
-const morgan = require("morgan"); //import morgan
-const methodOverride = require("method-override");
-const path = require("path");
+const express = require("express") // import express
+const morgan = require("morgan") //import morgan
+const methodOverride = require("method-override")
+const path = require("path")
 const BookRouter = require("./controllers/books.js")
 const UserRouter = require("./controllers/users.js")
-const ReviewRouter = require("./controllers/reviews.js")
-const session = require("express-session");
-const MongoStore = require("connect-mongo"); //what connects to the mongo database
+// const ReviewRouter = require("./controllers/reviews.js")
+const session = require("express-session")
+const MongoStore = require("connect-mongo") //what connects to the mongo database
 
 
 /////////////////////////////////////////////////
@@ -25,9 +25,9 @@ const app = require("liquid-express-views")(express(), {
 // Middleware
 /////////////////////////////////////////////////////
 app.use(morgan("tiny")); //logging the routes
-app.use(methodOverride("_method")); // override for put and delete requests from forms
-app.use(express.urlencoded({ extended: true })); // parse urlencoded request bodies
-app.use(express.static("public")); // serve files from public statically
+app.use(methodOverride("_method")) // override for put and delete requests from forms
+app.use(express.urlencoded({ extended: true })) // parse urlencoded request bodies
+app.use(express.static("public")) // serve files from public statically
 
 // middleware to setup session
 app.use(
@@ -37,7 +37,7 @@ app.use(
     saveUninitialized: true,
     resave: false,
   })
-);
+)
 
 
 ////////////////////////////////////////////
@@ -45,12 +45,12 @@ app.use(
 ////////////////////////////////////////////
 app.use("/books", BookRouter) //now has access to all routes in books.js and will put the /books in front of every route created within that router
 app.use("/users", UserRouter) // send all "/user" routes to user router
-app.use("/books", ReviewRouter)
+// app.use("/books", ReviewRouter)
 
 
 app.get("/", (req, res) => {
-  res.render("home");
-});
+  res.render("home")
+})
 
 
 

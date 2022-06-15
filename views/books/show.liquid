@@ -11,10 +11,10 @@
        
             <br><br>
                <!-- Review Section -->
-<section class="book-reviews">
+            <section class="book-reviews">
                <h2>Reviews</h2>
                <!-- Comment form -->
-            <form id="add-review-form" action="/books/{{book.id}}/reviews" method="POST"> 
+            <form id="add-review-form" action="/books/{{book.id}}" method="POST"> 
 
               <label>Rating:</label>
               <select name="rating">
@@ -25,7 +25,7 @@
                 <option value="5">5</option>
             </select>
                 <label>Review:</label>
-                <textarea name="review" placeholder="Enter review here"></textarea>
+                <textarea name="reviewBody" placeholder="Enter review here"></textarea>
               <button type="submit" class="btn btn-primary btn-sm mt-2">Add a Review</button>
             </form>
 

@@ -1,28 +1,28 @@
-////////////////////////////////////////
-// Import Dependencies
-////////////////////////////////////////
-const express = require("express");
-const Review = require("../models/review.js");
+// ////////////////////////////////////////
+// // Import Dependencies
+// ////////////////////////////////////////
+// const express = require("express");
+// const Review = require("../models/review.js");
 
-/////////////////////////////////////////
-// Create Route
-/////////////////////////////////////////
-const router = express.Router();
-//change all instances of router. get etc, to router
+// /////////////////////////////////////////
+// // Create Route
+// /////////////////////////////////////////
+// const router = express.Router();
+// //change all instances of router. get etc, to router
 
-////////////////////////////////////////
-// Router Middleware
-////////////////////////////////////////
-// Authorization Middleware
-// commenting this out so I can access all pages
-router.use((req, res, next) => {
-  //now you can't access "/reviews" without logging in first
-  if (req.session.loggedIn) {
-    next();
-  } else {
-    res.redirect("/users/login");
-  }
-});
+// ////////////////////////////////////////
+// // Router Middleware
+// ////////////////////////////////////////
+// // Authorization Middleware
+// // commenting this out so I can access all pages
+// router.use((req, res, next) => {
+//   //now you can't access "/reviews" without logging in first
+//   if (req.session.loggedIn) {
+//     next();
+//   } else {
+//     res.redirect("/users/login");
+//   }
+// });
 
 /////////////////////////////////////////
 // Routes - all reviews routes specifically
@@ -98,36 +98,36 @@ router.use((req, res, next) => {
 
 // EDIT - Get
 
-// SHOW - Show
-// show the reviews
-router.get("/:id", (req, res) => {
-  const username = req.session.username;
-  // get the id from params
-  const id = req.params.id;
-  // console.log(id);
-  // console.log(req.body.reviews);
-  // find the particular Review from the database
-  Review.findById(id)
-    .then((reviews) => {
-      // render the template with the data from the database
-      res.render("reviews/show.liquid", { reviews });
-    })
-    .catch((error) => {
-      // console.log(error);
-      res.json({ error });
-    });
-});
+// // SHOW - Show
+// // show the reviews
+// router.get("/:id", (req, res) => {
+//   const username = req.session.username;
+//   // get the id from params
+//   const id = req.params.id;
+//   // console.log(id);
+//   // console.log(req.body.reviews);
+//   // find the particular Review from the database
+//   Review.findById(id)
+//     .then((reviews) => {
+//       // render the template with the data from the database
+//       res.render("reviews/show.liquid", { reviews });
+//     })
+//     .catch((error) => {
+//       // console.log(error);
+//       res.json({ error });
+//     });
+// });
 
-// NEW - Get
-//NEW ROUTE
-//need id for books
-router.get("/:id/new", (req, res) => {
-  let id = req.params.id
-  // console.log(id)
-  res.render("reviews/new", {
-    id
-  })
-});
+// // NEW - Get
+// //NEW ROUTE
+// //need id for books
+// router.get("/:id/new", (req, res) => {
+//   let id = req.params.id
+//   // console.log(id)
+//   res.render("reviews/new", {
+//     id
+//   })
+// });
 
 // CREATE - Post
 // need to grab the id of the book, then find the book by req.params.id, in id then push review into books.reviews
@@ -169,4 +169,4 @@ router.get("/:id/new", (req, res) => {
 //////////////////////////////////////////
 // Export the Router
 //////////////////////////////////////////
-module.exports = router; //router contains all info in here
+// module.exports = router; //router contains all info in here
