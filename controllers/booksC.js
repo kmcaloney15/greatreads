@@ -90,20 +90,36 @@ router.put("/:id", (req, res) => {
 // CREATE - Post
 
 // new review
-router.post("/:id", (req, res) => {
+router.post("/:id/review", (req, res) => {
   // const username = req.session.username;
   const id = req.params.id; //book id
   // console.log("this is the " + id)
-  req.body.username = req.session.username
+  // req.body.username = req.session.username
+  
+  let newReview = {
+      reviewBody: req.body.reviewBody,
+      rating: req.body.rating,
+    };
 
-  Book.findById(id)
-  .then(book => {
-    book.reviews.push(req.body)
-    return book.save()
+  Review.create(newReview)
+  .then((review) => {
+    console.log(review)
+    Book.findByIdAndUpdate(id, { $push: { reviews: review}})
+    review.save()
+    res.redirect(`/books/${id}`)
+
   })
-  .then(book => {
-    res.redirect(`/${id}`)
-  })
+
+
+
+  // Book.findById(id)
+  // .then(book => {
+  //   book.reviews.push(req.body)
+  //   return book.save()
+  // })
+  // .then(book => {
+  //   res.redirect(`/${id}`)
+  // })
 
   // let newReview = {
   //   reviewId: id,
