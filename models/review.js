@@ -21,7 +21,7 @@ const reviewSchema = new Schema({
   username: [{ type: Schema.Types.ObjectId, ref: "User"}], //reference to the book model,
   reviewBody: String,
   rating: Number,
-});
+})
 
 // make review model
 const Review = model("Review", reviewSchema);
