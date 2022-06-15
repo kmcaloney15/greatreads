@@ -7,30 +7,15 @@
             <h2>{{ book.title }}</h2>
            
             <h3>{{ book.author }}</h3>
-            <h3>{{ book.series }}</h3>
-            
-            
-            <form action="/users/show" method="post">
-                {% comment %} <legend>New User</legend>
-                <label>USERNAME: <input type="text" name="username" required /> </label> {% endcomment %}
-                <label>
-                    Read:<input type="checkbox" name="hasRead" {% if
-                        book.hadRead == true %} checked {% endif %} />
-                    </label><br>
-                    {% comment %} <a href="/reviews/new" type="button" class="btn btn-outline-primary">Add a Review</a> {% endcomment %}
-                    <a href="/reviews/{{ book.id }}/new" type="button" class="btn btn-outline-primary">Add a Review</a>
-                    {% comment %} <input type="submit" value="Add a Review" href> {% endcomment %}
-                    {% comment %} <input type="submit" value="Add to Library" class="btn btn-primary"/> {% endcomment %}
-                    {% comment %} {% if book.library == true %} submit {% endif %} {% endcomment %}
-                    {% comment %} <fieldset>
-                </fieldset> {% endcomment %}
-            
+            <h3>{{ book.series }}</h3>        
        
             <br><br>
-               
-            <h2>Reviews</h2>
-            <form id="add-review-form" action="/books/{{book._id}}/reviews?_method=POST" method="POST"> 
-              <!-- // added this action above to be able to pull the movie id to display it's specific reviews  -->
+               <!-- Review Section -->
+<section class="book-reviews">
+               <h2>Reviews</h2>
+               <!-- Comment form -->
+            <form id="add-review-form" action="/books/{{book.id}}/reviews?_method=POST" method="POST"> 
+
               <label>Rating:</label>
               <select name="rating">
                 <option value="1">1</option>
@@ -40,10 +25,22 @@
                 <option value="5">5</option>
             </select>
                 <label>Review:</label>
-                <textarea name="content" placeholder="Enter review here"></textarea>
-              <input type="submit" value="Add Review">
+                <textarea name="review" placeholder="Enter review here"></textarea>
+              <button type="submit" class="btn btn-primary btn-sm mt-2">Add a Review</button>
             </form>
-            
+
+            <!-- Review with nested reviews -->
+            {% for review in book.reviews%}
+
+                <div class="flexbox" src="{{review.reviewOwner}}">
+                    <p class="reviewBody">{{review.reviewBody}}</p>
+                </div>
+
+
+            {% endfor%}
+
+
+</section>            
 
 
 

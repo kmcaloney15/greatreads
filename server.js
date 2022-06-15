@@ -45,7 +45,7 @@ app.use(
 ////////////////////////////////////////////
 app.use("/books", BookRouter) //now has access to all routes in books.js and will put the /books in front of every route created within that router
 app.use("/users", UserRouter) // send all "/user" routes to user router
-app.use("/reviews", ReviewRouter)
+app.use("/books", ReviewRouter)
 
 
 app.get("/", (req, res) => {

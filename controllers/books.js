@@ -3,6 +3,7 @@
 ////////////////////////////////////////
 const express = require("express");
 const Book = require("../models/book.js");
+const Review = require("../models/review.js")
 
 /////////////////////////////////////////
 // Create Route
@@ -70,7 +71,7 @@ router.put("/:id", (req, res) => {
     Book.findByIdAndUpdate(id, req.body, { new: true })
       .then((book) => {
         // redirect to main page after updating
-        res.redirect("/users");
+        res.redirect("/books/show");
       })
       // send error as json
       .catch((error) => {
@@ -80,36 +81,63 @@ router.put("/:id", (req, res) => {
   });
 
 // CREATE - Post
-// need to grab the id of the book, then find the book by req.params.id, in id then push review into books.reviews
-//create the route!!!
-router.post("/:id", (req, res) => {
-  // add username to req.body to track related user
-  req.body.username = req.session.username;
-  const id = req.params.id
-  console.log(id)
 
-  Book.create(req.body)
-    //
-    .then((newReview) => {
-      // console.log(data)
-      Book.findByIdAndUpdate(id, { $push: { review: newReview._id } })
-      .then((review) => {
-        console.log(review)
-      })
-      // console.log(newReview)
-      // res.render("/show")
-    
-    })
-    // User.findOneAndUpdate({username:username}, {$push: {review: newReview}})
-    // .then((user) => {
-    //   // console.log(user)
-    // })
-    // send error as json
-    .catch((error) => {
-      console.log(error)
-      res.json({ error })
-    })
+// new review
+router.post("/:id/reviews", (req, res) => {
+  const username = req.session.username
+  const id = req.params.id
+
+  let newReview = {
+    reviewId: id,
+    reviewOwner: {
+      username: req.session.username
+    },
+    reviewBody: req.body.reviewBody,
+    rating: 0,
+  }
+  // console.log(req.body)
+  Review.create(newReview)
+  .then((review) => {
+    Book.findByIdAndUpdate(id, { $push: { reviews: review } })
+
+
+  })
+
+
+res.redirect(`/books/${id}`)
 })
+
+// router.post("/:id", (req, res) => {
+//   // add username to req.body to track related user
+//   req.body.username = req.session.username;
+//   const id = req.params.id
+//   console.log(id)
+
+//   Book.create(req.body)
+//     //
+//     .then((newReview) => {
+//       // console.log(data)
+//       Book.findByIdAndUpdate(id, { $push: { review: newReview._id } })
+//       .then((review) => {
+//         console.log(review)
+//       })
+//       // console.log(newReview)
+//       res.render("/show/{{book.id}}")
+    
+//     })
+//     // User.findOneAndUpdate({username:username}, {$push: {review: newReview}})
+//     // .then((user) => {
+//     //   // console.log(user)
+//     // })
+//     // send error as json
+//     .catch((error) => {
+//       console.log(error)
+//       res.json({ error })
+//     })
+// })
+
+
+
 // EDIT - Get
 router.get("/:id/edit", (req, res) => {
   // get the id from params
@@ -118,7 +146,7 @@ router.get("/:id/edit", (req, res) => {
   Book.findById(id)
     .then((book) => {
       // render edit page and send fruit data
-      res.render("books/edit.liquid", { book });
+      res.render("books/show", { book });
     })
     // send error as json
     .catch((error) => {
