@@ -94,8 +94,8 @@ router.post("/:id/reviews", (req, res) => {
     reviewBody: req.body.reviewBody,
     rating: 0,
   }
-  User.findOne({ username: req.session.username }).then((user) => {
-    Review.create(req.body);
+  User.findOne({ username: req.session.username })
+  .then((user) => {
   })
 
   // console.log(req.body)
@@ -110,7 +110,7 @@ router.post("/:id/reviews", (req, res) => {
   .then((user) => {
     console.log(user)
   })
-  res.redirect(`/books/${id}`)
+  res.redirect("/books/show")
   .catch((error) => {
     console.log(error)
     res.json({error})

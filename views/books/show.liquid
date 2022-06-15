@@ -30,14 +30,14 @@
             </form>
 
             <!-- Review with nested reviews -->
-            {% for review in book.reviews%}
+            {% comment %} {% for review in book.reviews%} {% endcomment %}
 
                 <div class="flexbox" src="{{review.reviewOwner}}">
                     <p class="reviewBody">{{review.reviewBody}}</p>
                 </div>
 
 
-            {% endfor%}
+            {% comment %} {% endfor%} {% endcomment %}
 
 
 </section>            
