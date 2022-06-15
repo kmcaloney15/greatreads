@@ -93,29 +93,28 @@ router.post("/:id/reviews", (req, res) => {
     },
     reviewBody: req.body.reviewBody,
     rating: 0,
-  }
+  };
   User.findOne({ username: req.session.username })
-  .then((user) => {
-  })
-
-  // console.log(req.body)
-  Review.create(newReview)
-  .then((review) => {
-    Book.findByIdAndUpdate(id, { $push: { reviews: review._id } })
-    .then(
-      (book) => {
-        console.log(book, "this is a book");
+    .then((user) => {
+      // console.log(req.body)
+      Review.create(newReview)
+      .then((review) => {
+        Book.findByIdAndUpdate(id, { $push: { reviews: review._id } })
+        .then(
+          (book) => {
+            console.log(book, "this is a book");
+          })
       })
-  })
-  .then((user) => {
-    console.log(user)
-  })
-  res.redirect("/books/show")
+    })
+    .then((user) => {
+      console.log(user);
+    });
+  res.redirect("/books/:id")
   .catch((error) => {
-    console.log(error)
-    res.json({error})
-  })
-})
+    console.log(error);
+    res.json({ error });
+  });
+});
 
 // router.post("/:id", (req, res) => {
 //   // add username to req.body to track related user
