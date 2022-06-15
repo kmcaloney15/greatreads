@@ -80,8 +80,52 @@ router.put("/:id", (req, res) => {
   });
 
 // CREATE - Post
+// need to grab the id of the book, then find the book by req.params.id, in id then push review into books.reviews
+//create the route!!!
+router.post("/:id", (req, res) => {
+  // add username to req.body to track related user
+  req.body.username = req.session.username;
+  const id = req.params.id
+  console.log(id)
 
+  Book.create(req.body)
+    //
+    .then((newReview) => {
+      // console.log(data)
+      Book.findByIdAndUpdate(id, { $push: { review: newReview._id } })
+      .then((review) => {
+        console.log(review)
+      })
+      // console.log(newReview)
+      // res.render("/show")
+    
+    })
+    // User.findOneAndUpdate({username:username}, {$push: {review: newReview}})
+    // .then((user) => {
+    //   // console.log(user)
+    // })
+    // send error as json
+    .catch((error) => {
+      console.log(error)
+      res.json({ error })
+    })
+})
 // EDIT - Get
+router.get("/:id/edit", (req, res) => {
+  // get the id from params
+  const id = req.params.id;
+  // get the fruit from the database
+  Book.findById(id)
+    .then((book) => {
+      // render edit page and send fruit data
+      res.render("books/edit.liquid", { book });
+    })
+    // send error as json
+    .catch((error) => {
+      console.log(error);
+      res.json({ error });
+    });
+});
 
 // SHOW - Show
 router.get("/:id", (req, res) => {
