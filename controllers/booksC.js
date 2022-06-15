@@ -33,11 +33,20 @@ router.use((req, res, next) => {
 // Index Route / The Async/Await Method
 // using this so I don't need to log in everytime
 router.get("/", async (req, res) => {
+  Book.find({})
+  .then(books => {
+    res.render("books/index", {books})
+  })
+  .catch((error) => {
+    console.log(error)
+    res.json({ error })
+  })
   //async looks for any kind of awaits - async knows it has to wait for await to finsh running before it will run it's function
-  const books = await Book.find({}); // books.find({}) takes a long time to run
+  // const books = await Book.find({}); // books.find({}) takes a long time to run
   // await has it wait a second allowing books.find({}) to run before it runs allowing the data to be retrived from the database
-  res.render("books/index.liquid", { books });
-});
+  // res.render("books/index.liquid", { books })
+//  send error as json if they aren't
+})
 
 // index route / will only show the loggin in user books
 // router.get("/", (req, res) => {
@@ -65,7 +74,6 @@ router.put("/:id", (req, res) => {
   const id = req.params.id;
   // check if the hasRead property should be true or false
   req.body.hasRead = req.body.hasRead === "on" ? true : false;
-  v;
   // update the book
   Book.findByIdAndUpdate(id, req.body, { new: true })
     .then((book) => {

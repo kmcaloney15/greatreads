@@ -17,24 +17,24 @@
             <form id="add-review-form" action="/books/{{book.id}}" method="POST"> 
 
               <label>Rating:</label>
-              <select name="rating">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-            </select>
+                <select name="rating">
+                    <option  value="1">1</option>
+                    <option  value="2">2</option>
+                    <option  value="3">3</option>
+                    <option  value="4">4</option>
+                    <option  value="5">5</option>
+                </select>
                 <label>Review:</label>
                 <textarea name="reviewBody" placeholder="Enter review here"></textarea>
-              <button type="submit" class="btn btn-primary btn-sm mt-2">Add a Review</button>
+                <button type="submit" class="btn btn-primary btn-sm mt-2">Add a Review</button>
             </form>
 
             <!-- Review with nested reviews -->
             {% comment %} {% for review in book.reviews%} {% endcomment %}
 
-                <div class="flexbox" src="{{review.reviewOwner}}">
-                    <p class="reviewBody">{{review.reviewBody}}</p>
-                </div>
+                {% comment %} <div class="flexbox" src="{{review.username}}"> {% endcomment %}
+            {% comment %} </div> {% endcomment %}
+                    {% comment %} <p class="reviewBody">{{review.reviewBody}}</p> {% endcomment %}
 
 
             {% comment %} {% endfor%} {% endcomment %}
