@@ -104,7 +104,7 @@ router.post("/:id/review", (req, res) => {
   Review.create(newReview)
   .then((review) => {
     console.log(review)
-    Book.findByIdAndUpdate(id, { $push: { reviews: review}})
+    return Book.findByIdAndUpdate(id, { $push: { reviews: review}}, {new: true})
     review.save()
     res.redirect(`/books/${id}`)
 
@@ -195,23 +195,26 @@ router.get("/:id/edit", (req, res) => {
     });
 });
 
-// SHOW - Show
+// SHOW - get / post
 router.get("/:id", (req, res) => {
   // get the id from params
-  const id = req.params.id
+  const id = req.params.id //book id
+  console.log(id)
   console.log(req.session)
 
   // find the particular book from the database
   Book.findById(id)
-
-    .then((book) => {
-      // render the template with the data from the database
-      res.render("books/show.liquid", { book });
+    .populate('reviews')
+    .exec(function(err, book){
+      res.render("books/show", { book});
     })
-    .catch((error) => {
-      console.log(error);
-      res.json({ error });
-    });
+    // .then((book) => {
+      
+    // })
+    // .catch((error) => {
+    //   console.log(error);
+    //   res.json({ error });
+    // });
 });
 
 //////////////////////////////////////////

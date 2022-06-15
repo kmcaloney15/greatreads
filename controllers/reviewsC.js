@@ -1,14 +1,14 @@
 // ////////////////////////////////////////
 // // Import Dependencies
 // ////////////////////////////////////////
-// const express = require("express");
-// const Review = require("../models/review.js");
+const express = require("express");
+const Review = require("../models/review.js");
 
 // /////////////////////////////////////////
 // // Create Route
 // /////////////////////////////////////////
-// const router = express.Router();
-// //change all instances of router. get etc, to router
+const router = express.Router();
+
 
 // ////////////////////////////////////////
 // // Router Middleware
@@ -28,9 +28,9 @@
 // Routes - all reviews routes specifically
 /////////////////////////////////////////
 
-// router.get("/reviews", (req, res) => {
-//   res.render("reviews/index.liquid");
-// });
+router.get("/reviews", (req, res) => {
+  res.render("reviews/index.liquid");
+});
 
 // Index Route / The Async/Await Method
 // using this so I don't need to log in everytime
@@ -41,40 +41,40 @@
 //   res.render("reviews/index.liquid", { reviews });
 // });
 
-// index route / will only show the loggin in user Reviews
-// router.get("/", (req, res) => {
-//     // find all the Reviews
-//     Review.find({ username: req.session.username })
-//       // render a template after they are found
-//       .then((reviews) => {
-//         console.log(reviews);
-//         res.render("reviews/index.liquid", { reviews });
-//       })
-//       // send error as json if they aren't
-//       .catch((error) => {
-//         console.log(error);
-//         res.json({ error });
-//       });
-//   });
+//index route / will only show the loggin in user Reviews
+router.get("/", (req, res) => {
+    // find all the Reviews
+    Review.find({ username: req.session.username })
+      // render a template after they are found
+      .then((reviews) => {
+        console.log(reviews);
+        res.render("reviews/index.liquid", { reviews });
+      })
+      // send error as json if they aren't
+      .catch((error) => {
+        console.log(error);
+        res.json({ error });
+      });
+  });
 
 
 
 // DELETE - Delete
-// router.delete("/:id", (req, res) => {
-//   // get the id from params
-//   const id = req.params.id;
-//   // delete the fruit
-//   Review.findByIdAndRemove(id)
-//     .then((review) => {
-//       // redirect to main page after deleting
-//       res.redirect("/books");
-//     })
-//     // send error as json
-//     .catch((error) => {
-//       // console.log(error);
-//       res.json({ error });
-//     });
-// });
+router.delete("/:id", (req, res) => {
+  // get the id from params
+  const id = req.params.id;
+  // delete the fruit
+  Review.findByIdAndRemove(id)
+    .then((review) => {
+      // redirect to main page after deleting
+      res.redirect("/books");
+    })
+    // send error as json
+    .catch((error) => {
+      // console.log(error);
+      res.json({ error });
+    });
+});
 
 // UPDATE - Put
 //update route
@@ -100,23 +100,23 @@
 
 // // SHOW - Show
 // // show the reviews
-// router.get("/:id", (req, res) => {
-//   const username = req.session.username;
-//   // get the id from params
-//   const id = req.params.id;
-//   // console.log(id);
-//   // console.log(req.body.reviews);
-//   // find the particular Review from the database
-//   Review.findById(id)
-//     .then((reviews) => {
-//       // render the template with the data from the database
-//       res.render("reviews/show.liquid", { reviews });
-//     })
-//     .catch((error) => {
-//       // console.log(error);
-//       res.json({ error });
-//     });
-// });
+router.get("/:id", (req, res) => {
+  const username = req.session.username;
+  // get the id from params
+  const id = req.params.id;
+  // console.log(id);
+  // console.log(req.body.reviews);
+  // find the particular Review from the database
+  Review.findById(id)
+    .then((reviews) => {
+      // render the template with the data from the database
+      res.render("reviews/show.liquid", { reviews });
+    })
+    .catch((error) => {
+      // console.log(error);
+      res.json({ error });
+    });
+});
 
 // // NEW - Get
 // //NEW ROUTE
@@ -169,4 +169,4 @@
 //////////////////////////////////////////
 // Export the Router
 //////////////////////////////////////////
-// module.exports = router; //router contains all info in here
+module.exports = router; //router contains all info in here

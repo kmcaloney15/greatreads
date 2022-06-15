@@ -25,6 +25,7 @@ const booksSchema = new Schema({
   library: Boolean,
   //reference to the review model
   reviews: [{ type: Schema.Types.ObjectId, ref: "Review"}],
+  username: [{ type: Schema.Types.ObjectId, ref: "User"}], //reference to the user model,
 })
 
 // make book model

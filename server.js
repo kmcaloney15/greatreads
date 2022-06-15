@@ -8,7 +8,7 @@ const methodOverride = require("method-override")
 const path = require("path")
 const BookRouter = require("./controllers/booksC.js")
 const UserRouter = require("./controllers/usersC.js")
-// const ReviewRouter = require("./controllers/reviews.js")
+const ReviewRouter = require("./controllers/reviewsC.js")
 const session = require("express-session")
 const MongoStore = require("connect-mongo") //what connects to the mongo database
 
@@ -45,7 +45,7 @@ app.use(
 ////////////////////////////////////////////
 app.use("/books", BookRouter) //now has access to all routes in books.js and will put the /books in front of every route created within that router
 app.use("/users", UserRouter) // send all "/user" routes to user router
-// app.use("/books", ReviewRouter)
+app.use("/reviews", ReviewRouter)
 
 app.get("/", (req, res) => {
   res.render("home")

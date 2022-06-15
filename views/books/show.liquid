@@ -14,7 +14,7 @@
             <section class="book-reviews">
                <h2>Reviews</h2>
                <!-- Comment form -->
-            <form id="add-review-form" action="/books/{{book.id}}/review" method="POST"> 
+            <form id="add-review-form" action="/books/{{book._id}}/review" method="POST"> 
 
               <label>Rating:</label>
                 <select name="rating">
@@ -28,7 +28,22 @@
                 <textarea name="reviewBody" placeholder="Enter review here"></textarea>
                 <button type="submit" class="btn btn-primary btn-sm mt-2">Add a Review</button>
             </form>
+            <table class="review-table">
+            <div class="review-box">
+                <h3>Reviews:</h3>
+                {%for review in book.reviews%}
+                <tr>
+                    <td>{{review.username}}</td>
+                    <td> Rating: {{review.rating}} | </td>
+                   <td> {{review.reviewBody}}</td> 
+                   <td><a href="/reviews/{{review._id}}">Edit Review</a></td>
+                   <!--Change delete link -->
+                   <td><a href="/reviews/{{review._id}}">Delete Review</a></td>
 
+                </tr>
+            {% endfor%}
+            </div>
+        </table>
             <!-- Review with nested reviews -->
             {% comment %} {% for review in book.reviews%} {% endcomment %}
 
