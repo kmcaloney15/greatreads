@@ -1,16 +1,30 @@
 {% layout "layout.liquid" %} {% block content %}
-    <div>
-        <h1 class="fw-bolder mb-1">Reviews</h1>    
-
-        <article>
-            <h2>Username: {{ reviews.username }}</h2>
+<div>
+    <h1 class="fw-bolder mb-1">Reviews</h1>    
+    
+    <article>
+        <h2>Username: {{ reviews.username }}</h2>
+        <form action="/reviews/edit" method="post">       
            
-            <h3>Rating: {{ reviews.rating }}</h3>
-            <h3>
+            <label>
+                Rating:<input
+                  type="number"
+                  name="rating"
+                  placeholder="Enter rating from 1 - 5"
+                  value="{{reviews.rating}}"
+                />
+              </label>
+            
                 <div>
-                REview: {{ reviews.reviewBody }}
-            </div>     
-            <form action="/reviews/show" method="post">       
+                    <label>
+                        Review:<input
+                          type="text"
+                          name="reviewBody"
+                          placeholder="Enter new review here"
+                          value="{{reviews.reviewBody}}"
+                        />
+                      </label>
+                    </div>     
 
                     <input type="submit" value="Edit Review" class="btn btn-primary"/>
                     {% comment %} {% if review.library == true %} submit {% endif %} {% endcomment %}
