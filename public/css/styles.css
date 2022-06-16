@@ -178,7 +178,7 @@ textarea {
 }
 
 textarea {
-  resize: vertical;
+  resize: both;
 }
 
 footer {

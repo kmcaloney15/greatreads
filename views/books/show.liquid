@@ -1,109 +1,117 @@
 {% layout "layout.liquid" %} {% block content %}
-    <div>
-        
-        <a href="/books/" type="button" class="btn btn-small">Back to Main</a>
-        
-        <article>
-            <h2>Title: {{ book.title }}</h2>
-           
-            <h4>Author: {{ book.author }}</h4>
-            <h6>Series: {{ book.series }}</h6>        
-       
-            <br><br>
-               <!-- Review Section -->
-            <section class="book-reviews">
-               <h2>Reviews</h2>
-               <!-- Comment form -->
-               <div class="d-flex flex-row align-items-center">
-                    <form id="add-review-form" action="/books/{{book._id}}/review" method="POST"> 
-                    
+<div>
+
+    <a href="/books/" type="button" class="btn btn-small">Back to Main</a>
+
+    <article>
+        <h2>Title: {{ book.title }}</h2>
+
+        <h4>Author: {{ book.author }}</h4>
+        <h6>Series: {{ book.series }}</h6>
+
+        <br><br>
+        <!-- Review Section -->
+        <section class="book-reviews">
+            <h2>Reviews</h2>
+            <!-- Comment form -->
+            <div class="d-flex flex-row align-items-center">
+                <form id="add-review-form" action="/books/{{book._id}}/review" method="POST">
+
                     <label>
-                    Read:<input type="checkbox" name="hasRead"  />
-                 
+                        Read:<input type="checkbox" name="hasRead" />
+
                     </label><br>
-                    
+
                     <div>
+
                         <label>Rating:</label>
-                            <select name="rating">
-                                <option  value="1">1</option>
-                                <option  value="2">2</option>
-                                <option  value="3">3</option>
-                                <option  value="4">4</option>
-                                <option  value="5">5</option>
+                        <select name="rating" class="form-select form-select-sm">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
                         </select>
                     </div>
                     <div>
                         <label>Review:</label>
-                        <textarea name="reviewBody" class="d-flex flex-row align-items-center" placeholder="Enter review here"></textarea>
+                        <textarea name="reviewBody" class="form-control" placeholder="Enter review here"></textarea>
                     </div>
-                        <button type="submit" class="btn btn-primary btn-sm mt-2">Add a Review</button>
-                    
-                    </form>
-                </div>
-                <br>
-            <table class="table review-table">
-            <div class="review-box" >
-                <legend>{{book.title}}'s Reviews:</legend>
-                {% comment %} {% if  book.reviews = []%} {% endcomment %}
-                {%for review in book.reviews%}
-                {% comment %} <tr>
-                    <td>{{review.userPoster}}</td>
-                    <td> Rating: {{review.rating}} </td>
-                   <td> {{review.reviewBody}}</td> 
-                   <td><a href="/reviews/{{review._id}}">Edit Review</a></td>
-                   <!--Change delete link -->
-                </tr> {% endcomment %}
+                    <button type="submit" class="btn btn-primary btn-sm mt-2">Add a Review</button>
 
-
-                <div class="card mb-4">
-                    <div class="card-body">
-                      <p>{{review.reviewBody}}</p>
-          
-                      <div class="d-flex justify-content-between">
-                        <div class="d-flex flex-row align-items-center">
-                            <!-- where I could include profile pictures -->
-                          {% comment %} <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(4).webp" alt="avatar" width="25"
-                            height="25" /> {% endcomment %}
-                          <p class="medium mb-0 ms-2">{{review.userPoster}}</p>
-                        </div>
-                        <div class="d-flex flex-row align-items-center">
-                          <p class="medium text-muted mb-0">Rating:</p>
-                          <i class="far fa-thumbs-up mx-2 fa-xs text-black" style="margin-top: -0.20rem;"></i>
-                          <p class="medium text-muted mb-0">{{review.rating}}</p>
-
-                 
-                          <i class="far fa-thumbs-up mx-2 fa-xs text-black" style="margin-top: -0.20rem;"></i>
-                          <a class="medium text-muted mb-0" href="/reviews/{{review._id}}">Edit Review</a>
-                        </div>
-                      </div>
-                    </div>
-                  </div> 
-
-
-            {% endfor%}
-         
-
-            {% comment %} {% else %}
-            <p>No reviews yet.</p>
-
-            {%elsif%} {% endcomment %}
+                </form>
             </div>
-        </table>
+            <br>
+            <table class="table review-table">
+                <div class="review-box">
+                    <legend>{{book.title}}'s Reviews:</legend>
+                    {% comment %} {% if book.reviews = []%} {% endcomment %}
+                    {%for review in book.reviews%}
+                    {% comment %} <tr>
+                        <td>{{review.userPoster}}</td>
+                        <td> Rating: {{review.rating}} </td>
+                        <td> {{review.reviewBody}}</td>
+                        <td><a href="/reviews/{{review._id}}">Edit Review</a></td>
+                        <!--Change delete link -->
+                    </tr> {% endcomment %}
+
+
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <p>{{review.reviewBody}}</p>
+
+                            <div class="d-flex justify-content-between">
+                                <div class="d-flex flex-row align-items-center">
+                                    <!-- where I could include profile pictures -->
+                                    {% comment %} <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(4).webp"
+                                        alt="avatar" width="25" height="25" /> {% endcomment %}
+                                    <p class="medium mb-0 ms-2">{{review.userPoster}}</p>
+                                </div>
+                                <div class="d-flex flex-row align-items-center">
+                                    <p class="medium text-muted mb-0">Rating:</p>
+                                    <i class="far fa-thumbs-up mx-2 fa-xs text-black" style="margin-top: -0.20rem;"></i>
+                                    <p class="medium text-muted mb-0">{{review.rating}}</p>
+
+
+                                    <i class="far fa-thumbs-up mx-2 fa-xs text-black" style="margin-top: -0.20rem;"></i>
+                                    {% if username === review.userPoster%}
+                                    <div>
+                                        <a class="medium text-muted mb-0" href="/reviews/{{review._id}}">Edit Review</a>
+                                    </div>
+                                    {%else %}
+                                    <div>
+                                    </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    {% endfor%}
+
+
+                    {% comment %} {% else %}
+                    <p>No reviews yet.</p>
+
+                    {%elsif%} {% endcomment %}
+                </div>
+            </table>
             <!-- Review with nested reviews -->
             {% comment %} {% for review in book.reviews%} {% endcomment %}
 
-                {% comment %} <div class="flexbox" src="{{review.username}}"> {% endcomment %}
-            {% comment %} </div> {% endcomment %}
-                    {% comment %} <p class="reviewBody">{{review.reviewBody}}</p> {% endcomment %}
+            {% comment %} <div class="flexbox" src="{{review.username}}"> {% endcomment %}
+                {% comment %} </div> {% endcomment %}
+            {% comment %} <p class="reviewBody">{{review.reviewBody}}</p> {% endcomment %}
 
 
             {% comment %} {% endfor%} {% endcomment %}
 
 
-</section>            
+        </section>
 
 
 
-        </article>
-    </div>
+    </article>
+</div>
 {% endblock %}

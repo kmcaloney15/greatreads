@@ -1,43 +1,34 @@
 {% layout "layout.liquid" %} {% block content %}
 <div>
-    <h1 class="fw-bolder mb-1">Reviews</h1>    
-    
-    <article>
-        <h2>Username: {{ reviews.userPoster }}</h2>
-        <form action="/reviews/{{reviews._id}}?_method=PUT" method="POST">       
-           
-            <label>
-                Rating:<input
-                  type="number"
-                  name="rating"
-                  placeholder="Enter rating from 1 - 5"
-                  value="{{reviews.rating}}"
-                />
-              </label>
-            
-                <div>
-                    <label>
-                        Review:<input
-                          type="text"
-                          name="reviewBody"
-                          placeholder="Enter new review here"
-                          value="{{reviews.reviewBody}}"
-                        />
-                      </label>
-                    </div>     
+  <h1 class="fw-bolder mb-1">Reviews</h1>
 
-                    <input type="submit" value="Edit Review" class="btn btn-primary"/>
-                    {% comment %} {% if review.library == true %} submit {% endif %} {% endcomment %}
-                    {% comment %} <fieldset>
-                </fieldset> {% endcomment %}
-            
-            </form>
-            <form action="/reviews/{{ reviews._id }}?_method=DELETE" method="POST">
-                <input class="btn btn-primary" type="submit" value="Delete" />
-            </form>    
-            <br><br>
-               
-            <a href="/books/" type="button" class="btn btn-primary">Back to Main</a>
-        </article>
-    </div>
+  <article>
+    <h2>Username: {{ reviews.userPoster }}</h2>
+    <form action="/reviews/{{reviews._id}}?_method=PUT" method="POST">
+
+      <label>
+        Rating:<input type="number" name="rating" placeholder="Enter rating from 1 - 5" value="{{reviews.rating}}" />
+      </label>
+
+      <div>
+        <label>
+          Review:<input type="text" name="reviewBody" placeholder="Enter new review here"
+            value="{{reviews.reviewBody}}" />
+        </label>
+      </div>
+
+      <input type="submit" value="Edit Review" class="btn btn-primary" />
+      {% comment %} {% if review.library == true %} submit {% endif %} {% endcomment %}
+      {% comment %} <fieldset>
+      </fieldset> {% endcomment %}
+
+    </form>
+    <form action="/reviews/{{ reviews._id }}?_method=DELETE" method="POST">
+      <input class="btn btn-primary" type="submit" value="Delete" />
+    </form>
+    <br><br>
+
+    <a href="/books/" type="button" class="btn btn-primary">Back to Main</a>
+  </article>
+</div>
 {% endblock %}
