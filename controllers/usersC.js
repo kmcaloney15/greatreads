@@ -104,7 +104,7 @@ router.get("/", (req, res) => {
       .then((users) => {
         const reviews = users[0].review
         console.log(reviews);
-        res.render("users/profile.liquid", { users:users[0], reviews })
+        res.render("users/profile.liquid", { users:users[0] })
       })
       // send error as json if they aren't
       .catch((error) => {
