@@ -17,10 +17,10 @@
             <div class="d-flex flex-row align-items-center">
                 <form id="add-review-form" action="/books/{{book._id}}/review" method="POST">
 
-                    <label>
+                    {% comment %} <label>
                         Read:<input type="checkbox" name="hasRead" />
 
-                    </label><br>
+                    </label><br> {% endcomment %}
 
                     <div>
 
@@ -74,14 +74,14 @@
 
 
                                     <i class="far fa-thumbs-up mx-2 fa-xs text-black" style="margin-top: -0.20rem;"></i>
-                                    <!-- {% if username === review.userPoster%} -->
+                                    {% comment %} <!-- {% if username === review.userPoster%} --> {% endcomment %}
                                     <div>
                                         <a class="medium text-muted mb-0" href="/reviews/{{review._id}}">Edit Review</a>
                                     </div>
-                                    <!-- {%else %} -->
+                                    {% comment %} <!-- {%else %} --> {% endcomment %}
                                     <div>
                                     </div>
-                                    <!-- {% endif %} -->
+                                    {% comment %} <!-- {% endif %} --> {% endcomment %}
                                 </div>
                             </div>
                         </div>

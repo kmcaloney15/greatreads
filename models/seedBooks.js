@@ -26,35 +26,35 @@ db.on("open", () => {
         title: "Little Women", 
         author: "Lousia May Alcott", 
         series: "Classics",
-        image: "/img/books/little-women.jpg",
+        image: "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1562690475l/1934._SY475_.jpg",
         // review: [] 
     },
     { 
         title: "Harry Potter and the Deathly Hallows", 
         author: "J.K. Rowling", 
         series: "Harry Potter",
-        image: "/img/books/hp-deathly-hallows.jpg",
+        image: "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1474171184l/136251._SY475_.jpg",
         // review: false 
     },
     { 
         title: "The Hunger Games", 
         author: "Suzanne Collins", 
         series: "The Hunger Games",
-        image: "/img/books/hunger-games.jpg",
+        image: "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1586722975l/2767052.jpg",
         // review: false 
     },
     { 
         title: "A Game of Thrones", 
         author: "George R.R. Martin", 
         series: "A Song of Ice and Fire",
-        image: "/img/books/got.jpg",
+        image: "https://m.media-amazon.com/images/I/51D+-f5UcDL.jpg",
         // review: false 
     },
     { 
         title: "War and Peace", 
         author: "Leo Tolstoy", 
         series: "Classics",
-        image: "/img/books/war-and-peace.jpeg",
+        image: "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1413215930l/656.jpg",
         // review: false 
     },
   ];
