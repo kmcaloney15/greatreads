@@ -18,6 +18,7 @@ const userSchema = new Schema ({
     hasRead: Boolean,
     // bookshelf: ,
     review: [{ type: Schema.Types.ObjectId, ref: "Review"}],
+    profilePic: String,
 });
 
 // make user model

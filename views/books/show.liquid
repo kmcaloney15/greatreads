@@ -4,10 +4,10 @@
         <a href="/books/" type="button" class="btn btn-primary">Back to Main</a>
         
         <article>
-            <h2>{{ book.title }}</h2>
+            <h2>Title: {{ book.title }}</h2>
            
-            <h3>{{ book.author }}</h3>
-            <h3>{{ book.series }}</h3>        
+            <h4>Author: {{ book.author }}</h4>
+            <h6>Series: {{ book.series }}</h6>        
        
             <br><br>
                <!-- Review Section -->
@@ -28,19 +28,48 @@
                 <textarea name="reviewBody" placeholder="Enter review here"></textarea>
                 <button type="submit" class="btn btn-primary btn-sm mt-2">Add a Review</button>
             </form>
-            <table class="review-table">
+            <table class="table review-table">
             <div class="review-box">
-                <h3>Reviews:</h3>
+                <legend>{{book.title}}'s Reviews:</legend>
                 {% comment %} {% if  book.reviews = []%} {% endcomment %}
                 {%for review in book.reviews%}
                 <tr>
                     <td>{{review.userPoster}}</td>
-                    <td> Rating: {{review.rating}} | </td>
+                    <td> Rating: {{review.rating}} </td>
                    <td> {{review.reviewBody}}</td> 
                    <td><a href="/reviews/{{review._id}}">Edit Review</a></td>
                    <!--Change delete link -->
-                   
                 </tr>
+
+
+
+
+
+                <div class="card mb-4">
+                    <div class="card-body">
+                      <p>{{review.reviewBody}}</p>
+          
+                      <div class="d-flex justify-content-between">
+                        <div class="d-flex flex-row align-items-center">
+                            <!-- where I could include profile pictures -->
+                          <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(4).webp" alt="avatar" width="25"
+                            height="25" />
+                          <p class="medium mb-0 ms-2">{{review.userPoster}}</p>
+                        </div>
+                        <div class="d-flex flex-row align-items-center">
+                          <p class="medium text-muted mb-0">Rating:</p>
+                          <i class="far fa-thumbs-up mx-2 fa-xs text-black" style="margin-top: -0.20rem;"></i>
+                          <p class="medium text-muted mb-0">{{review.rating}}</p>
+
+                 
+                          <i class="far fa-thumbs-up mx-2 fa-xs text-black" style="margin-top: -0.20rem;"></i>
+                          <a class="medium text-muted mb-0" href="/reviews/{{review._id}}">Edit Review</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+
             {% endfor%}
          
 

@@ -114,8 +114,6 @@ router.get("/:id/", (req, res) => {
       });
   });
 
-
-
 // // SHOW - Show
 // // show the reviews
 router.get("/:id", (req, res) => {
@@ -135,53 +133,7 @@ router.get("/:id", (req, res) => {
     });
 });
 
-// // NEW - Get
-// //NEW ROUTE
-// //need id for books
-// router.get("/:id/new", (req, res) => {
-//   let id = req.params.id
-//   // console.log(id)
-//   res.render("reviews/new", {
-//     id
-//   })
-// });
 
-// CREATE - Post
-// need to grab the id of the book, then find the book by req.params.id, in id then push review into books.reviews
-//create the route!!!
-// router.post("/:id", (req, res) => {
-//   // add username to req.body to track related user
-//   req.body.username = req.session.username;
-//   const id = req.params.id
-//   console.log(id)
-//   // let newReviews = {
-//   //   reviewId: id,
-//   //   username: req.session.username,
-//   //   reviewBody: req.body.reviewBody,
-//   //   rating: 0,
-//   // }
-//   Review.create(req.body)
-//     //
-//     .then((newReview) => {
-//       // console.log(data)
-//       Book.findByIdAndUpdate(id, { $push: { review: newReview._id } })
-//       .then((review) => {
-//         console.log(review)
-//       })
-//       // console.log(newReview)
-//       // res.render("/show")
-    
-//     })
-    // User.findOneAndUpdate({username:username}, {$push: {review: newReview}})
-    // .then((user) => {
-    //   // console.log(user)
-    // })
-    // send error as json
-//     .catch((error) => {
-//       console.log(error)
-//       res.json({ error })
-//     })
-// })
 
 //////////////////////////////////////////
 // Export the Router
