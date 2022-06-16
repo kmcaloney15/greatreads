@@ -80,12 +80,12 @@ router.post("/login", async (req, res) => {
 
 // Index Route / The Async/Await Method
 // using this so I don't need to log in everytime
-router.get("/", async (req, res) => {
-    //async looks for any kind of awaits - async knows it has to wait for await to finsh running before it will run it's function
-    const users = await User.find({}); // books.find({}) takes a long time to run
-    // await has it wait a second allowing books.find({}) to run before it runs allowing the data to be retrived from the database
-    res.render("users/profile", { users });
-});
+// router.get("/", async (req, res) => {
+//     //async looks for any kind of awaits - async knows it has to wait for await to finsh running before it will run it's function
+//     const users = await User.find({}); // books.find({}) takes a long time to run
+//     // await has it wait a second allowing books.find({}) to run before it runs allowing the data to be retrived from the database
+//     res.render("users/profile", { users });
+// });
 
 // how to destroy the session
 router.get("/logout", (req, res) => {
@@ -112,20 +112,6 @@ router.get("/", (req, res) => {
         res.json({ error })
       });
   });
-
-
-// NEW - Get // don't need here but will for reviews
-
-
-// DELETE - Delete
-
-
-// UPDATE - Put
-
-
-// CREATE - Post
-
-// EDIT - Get
 
 // SHOW - Show
 router.get("/:id", (req, res) => {
