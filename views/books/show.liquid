@@ -31,6 +31,7 @@
             <table class="review-table">
             <div class="review-box">
                 <h3>Reviews:</h3>
+                {% comment %} {% if  book.reviews = []%} {% endcomment %}
                 {%for review in book.reviews%}
                 <tr>
                     <td>{{review.username}}</td>
@@ -38,10 +39,15 @@
                    <td> {{review.reviewBody}}</td> 
                    <td><a href="/reviews/{{review._id}}">Edit Review</a></td>
                    <!--Change delete link -->
-                   <td><a href="/reviews/{{review._id}}">Delete Review</a></td>
-
+                   
                 </tr>
             {% endfor%}
+         
+
+            {% comment %} {% else %}
+            <p>No reviews yet.</p>
+
+            {%elsif%} {% endcomment %}
             </div>
         </table>
             <!-- Review with nested reviews -->

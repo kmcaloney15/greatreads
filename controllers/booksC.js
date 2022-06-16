@@ -110,8 +110,6 @@ router.post("/:id/review", (req, res) => {
 
   })
 
-
-
   // Book.findById(id)
   // .then(book => {
   //   book.reviews.push(req.body)
