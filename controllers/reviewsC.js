@@ -62,19 +62,20 @@ router.get("/", (req, res) => {
 // DELETE - Delete
 router.delete("/:id", (req, res) => {
   // get the id from params
-  const id = req.params.id;
-  // delete the fruit
-  Review.findByIdAndRemove(id)
+  const id = req.params.id //review id
+  console.log(id)
+  // delete the review
+  Review.findByIdAndDelete(id)
     .then((review) => {
       // redirect to main page after deleting
-      res.redirect("/books");
+      res.redirect("/books")
     })
     // send error as json
     .catch((error) => {
-      // console.log(error);
-      res.json({ error });
-    });
-});
+      // console.log(error)
+      res.json({ error })
+    })
+})
 
 // UPDATE - Put
 //update route

@@ -1,14 +1,15 @@
 {% layout "layout.liquid" %} {% block content %}
     <div>
         <h1 class="fw-bolder mb-1">Reviews</h1>    
-        <h1>thidinsdlkfnlsdkjoweijoweidsknvdlcknv</h1>  
+ 
         <article>
-            <h1>testerereindingsidngds</h1>
-            <h2>{{ reviews.name }}</h2>
+            <h2>{{ reviews.username }}</h2>
            
             <h3>{{ reviews.rating }}</h3>
-            <h3>{{ reviews.content }}</h3>
-                    
+            <h3>
+                <div>
+                {{ reviews.reviewBody }}
+            </div>     
             <form action="/reviews/show" method="post">       
 
                     <input type="submit" value="Edit Review" class="btn btn-primary"/>
@@ -17,7 +18,7 @@
                 </fieldset> {% endcomment %}
             
 
-            <a href="/reviews/{{ reviews._id }}/edit"><button>Edit</button></a>
+            <a href="/reviews/{{ reviews._id }}/edit"><button>Delete</button></a>
             <br><br>
                
             <a href="/reviews/" type="button" class="btn btn-primary">Back to Main</a>

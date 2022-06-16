@@ -1,13 +1,13 @@
 {% layout "layout.liquid" %} {% block content %}
     <div>
         <h1 class="fw-bolder mb-1">Reviews</h1>    
-        <h1>thidinsdlkfnlsdkjoweijoweidsknvdlcknv</h1>  
+   
         <article>
-            <h1>testerereindingsidngds</h1>
-            <h2>{{ reviews.name }}</h2>
+
+            <h2>{{ reviews.username }}</h2>
            
-            <h3>{{ reviews.rating }}</h3>
-            <h3>{{ reviews.content }}</h3>
+            <h3>Rating: {{ reviews.rating }}</h3>
+            <h3>Review: {{ reviews.reviewBody }}</h3>
                     
             <form action="/reviews/show" method="post">       
 
