@@ -33,16 +33,13 @@
                 <legend>{{book.title}}'s Reviews:</legend>
                 {% comment %} {% if  book.reviews = []%} {% endcomment %}
                 {%for review in book.reviews%}
-                <tr>
+                {% comment %} <tr>
                     <td>{{review.userPoster}}</td>
                     <td> Rating: {{review.rating}} </td>
                    <td> {{review.reviewBody}}</td> 
                    <td><a href="/reviews/{{review._id}}">Edit Review</a></td>
                    <!--Change delete link -->
-                </tr>
-
-
-
+                </tr> {% endcomment %}
 
 
                 <div class="card mb-4">
@@ -67,7 +64,7 @@
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </div> 
 
 
             {% endfor%}

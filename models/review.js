@@ -22,7 +22,12 @@ const reviewSchema = new Schema({
   userPoster: String,
   reviewBody: String,
   rating: String,
-})
+}
+, {
+  timestamps:true
+}
+
+)
 
 // make review model
 const Review = model("Review", reviewSchema);
