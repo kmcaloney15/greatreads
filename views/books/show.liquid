@@ -19,9 +19,8 @@
                     
                     <label>
                     Read:<input type="checkbox" name="hasRead"  />
-                    {% if
-                        book.hadRead == true %} 
-                        checked 
+                    {% if book.hasRead == checked %} 
+                        book.hasRead = true 
                     {% endif %}
                     </label><br>
                     

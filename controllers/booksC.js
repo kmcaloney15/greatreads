@@ -107,7 +107,7 @@ router.post("/:id/review", (req, res) => {
     console.log(review)
     return Book.findByIdAndUpdate(id, { $push: { reviews: review}}, {new: true})
     review.save()
-    res.redirect(`/books/${id}`)
+    res.redirect(`/books/`)
 
   })
 

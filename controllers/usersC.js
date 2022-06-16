@@ -88,12 +88,12 @@ router.get("/logout", (req, res) => {
 
 // Index Route / The Async/Await Method
 // using this so I don't need to log in everytime
-router.get("/", async (req, res) => {
-    //async looks for any kind of awaits - async knows it has to wait for await to finsh running before it will run it's function
-    const users = await User.find({}); // books.find({}) takes a long time to run
-    // await has it wait a second allowing books.find({}) to run before it runs allowing the data to be retrived from the database
-    res.render("users/profile", { users });
-});
+// router.get("/", async (req, res) => {
+//     //async looks for any kind of awaits - async knows it has to wait for await to finsh running before it will run it's function
+//     const users = await User.find({}); // books.find({}) takes a long time to run
+//     // await has it wait a second allowing books.find({}) to run before it runs allowing the data to be retrived from the database
+//     res.render("users/profile", { users });
+// });
 
 // index route / will only show the loggin in user books
 router.get("/", (req, res) => {
@@ -101,13 +101,14 @@ router.get("/", (req, res) => {
     User.find({ username: req.session.username })
       // render a template after they are found
       .then((users) => {
+        const reviews = users[0].reviews.id()
         console.log(users);
-        res.render("users/profile.liquid", { users });
+        res.render("users/profile.liquid", { users:users[0], reviews })
       })
       // send error as json if they aren't
       .catch((error) => {
-        console.log(error);
-        res.json({ error });
+        console.log(error)
+        res.json({ error })
       });
   });
 
