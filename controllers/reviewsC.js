@@ -15,14 +15,14 @@ const router = express.Router();
 // ////////////////////////////////////////
 // // Authorization Middleware
 // // commenting this out so I can access all pages
-// router.use((req, res, next) => {
-//   //now you can't access "/reviews" without logging in first
-//   if (req.session.loggedIn) {
-//     next();
-//   } else {
-//     res.redirect("/users/login");
-//   }
-// });
+router.use((req, res, next) => {
+  //now you can't access "/reviews" without logging in first
+  if (req.session.loggedIn) {
+    next();
+  } else {
+    res.redirect("/users/login");
+  }
+});
 
 /////////////////////////////////////////
 // Routes - all reviews routes specifically
@@ -56,7 +56,6 @@ router.get("/", (req, res) => {
         res.json({ error });
       });
   });
-
 
 
 // DELETE - Delete

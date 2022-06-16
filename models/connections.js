@@ -8,7 +8,7 @@ const mongoose = require("mongoose");
 // Database Connection
 /////////////////////////////////////////////
 // Setup inputs for our connect function
-const DATABASE_URL = process.env.DATABASE_URL;
+const MONGODB_URI = process.env.MONGODB_URI;
 const CONFIG = {
   useNewURLParser: true,
   useUnifiedTopology: true,
@@ -16,14 +16,15 @@ const CONFIG = {
 
 // const db = mongoose.connection //or could create this shortcut if called multiple times
 // Establish Connection
-mongoose.connect(DATABASE_URL, CONFIG);
+mongoose.connect(MONGODB_URI, CONFIG)
 
 // Events for when connection opens/disconnects/errors
 mongoose.connection
   .on("open", () => console.log("Connected to Mongoose"))
+  .on('connected', () => console.log(`Mongoose connected to ${mongoose.connection.host}:${mongoose.connection.port}`)
   .on("close", () => console.log("Disconnected from Mongoose"))
-  .on("error", (error) => console.log(error));
-
+  .on("error", (error) => console.log(error))
+  )
 
 
 ////////////////////////////////////////////////////
