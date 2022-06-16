@@ -3,8 +3,8 @@
     <h1 class="fw-bolder mb-1">Reviews</h1>    
     
     <article>
-        <h2>Username: {{ reviews.username }}</h2>
-        <form action="/reviews/edit" method="post">       
+        <h2>Username: {{ reviews.userPoster }}</h2>
+        <form action="/reviews/{{reviews._id}}?_method=PUT" method="POST">       
            
             <label>
                 Rating:<input
@@ -37,7 +37,7 @@
             </form>    
             <br><br>
                
-            <a href="/reviews/" type="button" class="btn btn-primary">Back to Main</a>
+            <a href="/books/" type="button" class="btn btn-primary">Back to Main</a>
         </article>
     </div>
 {% endblock %}

@@ -99,6 +99,7 @@ router.post("/:id/review", (req, res) => {
   let newReview = {
       reviewBody: req.body.reviewBody,
       rating: req.body.rating,
+      userPoster: req.session.username,
     };
 
   Review.create(newReview)

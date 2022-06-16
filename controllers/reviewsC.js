@@ -66,7 +66,7 @@ router.delete("/:id", (req, res) => {
   console.log(id)
   // delete the review
   Review.findByIdAndDelete(id)
-    .then((review) => {
+    .then((reviews) => {
       // redirect to main page after deleting
       res.redirect("/books")
     })
@@ -83,12 +83,12 @@ router.put("/:id", (req, res) => {
   // get the id from params
   const id = req.params.id;
   // check if the readyToEat property should be true or false
-  req.body.hasRead = req.body.hasRead === "on" ? true : false;
-  // update the fruit
+//   req.body.hasRead = req.body.hasRead === "on" ? true : false;
+  // update the review
   Review.findByIdAndUpdate(id, req.body, { new: true })
-    .then((review) => {
+    .then((reviews) => {
       // redirect to main page after updating
-      res.redirect(`/users/${user._id}`);
+      res.redirect(`/books`)
     })
     // send error as json
     .catch((error) => {
@@ -98,11 +98,27 @@ router.put("/:id", (req, res) => {
 });
 
 // EDIT - Get
+router.get("/:id/", (req, res) => {
+    // get the id from params
+    const id = req.params.id;
+    // get the fruit from the database
+    Review.findById(id)
+      .then((reviews) => {
+        // render edit page and send fruit data
+        res.render("reviews/edit.liquid", { reviews });
+      })
+      // send error as json
+      .catch((error) => {
+        console.log(error);
+        res.json({ error });
+      });
+  });
+
+
 
 // // SHOW - Show
 // // show the reviews
 router.get("/:id", (req, res) => {
-  const username = req.session.username;
   // get the id from params
   const id = req.params.id;
   // console.log(id);
@@ -111,7 +127,7 @@ router.get("/:id", (req, res) => {
   Review.findById(id)
     .then((reviews) => {
       // render the template with the data from the database
-      res.render("reviews/edit.liquid", { reviews });
+      res.render("review/show.liquid", { reviews });
     })
     .catch((error) => {
       // console.log(error);
