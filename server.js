@@ -33,7 +33,7 @@ app.use(express.static("public")) // serve files from public statically
 app.use(
   session({
     secret: process.env.SECRET, //SECRET=IKnowSomeThingYouDontKnow
-    store: MongoStore.create({ mongoUrl: process.env.MONGODB_URI }),
+    store: MongoStore.create({ mongoUrl: process.env.DATABASE_URL }),
     saveUninitialized: true,
     resave: false,
   })
