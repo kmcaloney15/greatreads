@@ -1,7 +1,7 @@
 {% layout "layout.liquid" %} {% block content %}
     <div>
         
-        <a href="/books/" type="button" class="btn btn-primary">Back to Main</a>
+        <a href="/books/" type="button" class="btn btn-small">Back to Main</a>
         
         <article>
             <h2>Title: {{ book.title }}</h2>
@@ -14,22 +14,38 @@
             <section class="book-reviews">
                <h2>Reviews</h2>
                <!-- Comment form -->
-            <form id="add-review-form" action="/books/{{book._id}}/review" method="POST"> 
-
-              <label>Rating:</label>
-                <select name="rating">
-                    <option  value="1">1</option>
-                    <option  value="2">2</option>
-                    <option  value="3">3</option>
-                    <option  value="4">4</option>
-                    <option  value="5">5</option>
-                </select>
-                <label>Review:</label>
-                <textarea name="reviewBody" placeholder="Enter review here"></textarea>
-                <button type="submit" class="btn btn-primary btn-sm mt-2">Add a Review</button>
-            </form>
+               <div class="d-flex flex-row align-items-center">
+                    <form id="add-review-form" action="/books/{{book._id}}/review" method="POST"> 
+                    
+                    <label>
+                    Read:<input type="checkbox" name="hasRead"  />
+                    {% if
+                        book.hadRead == true %} 
+                        checked 
+                    {% endif %}
+                    </label><br>
+                    
+                    <div>
+                        <label>Rating:</label>
+                            <select name="rating">
+                                <option  value="1">1</option>
+                                <option  value="2">2</option>
+                                <option  value="3">3</option>
+                                <option  value="4">4</option>
+                                <option  value="5">5</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label>Review:</label>
+                        <textarea name="reviewBody" class="d-flex flex-row align-items-center" placeholder="Enter review here"></textarea>
+                    </div>
+                        <button type="submit" class="btn btn-primary btn-sm mt-2">Add a Review</button>
+                    
+                    </form>
+                </div>
+                <br>
             <table class="table review-table">
-            <div class="review-box">
+            <div class="review-box" >
                 <legend>{{book.title}}'s Reviews:</legend>
                 {% comment %} {% if  book.reviews = []%} {% endcomment %}
                 {%for review in book.reviews%}
@@ -49,8 +65,8 @@
                       <div class="d-flex justify-content-between">
                         <div class="d-flex flex-row align-items-center">
                             <!-- where I could include profile pictures -->
-                          <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(4).webp" alt="avatar" width="25"
-                            height="25" />
+                          {% comment %} <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(4).webp" alt="avatar" width="25"
+                            height="25" /> {% endcomment %}
                           <p class="medium mb-0 ms-2">{{review.userPoster}}</p>
                         </div>
                         <div class="d-flex flex-row align-items-center">

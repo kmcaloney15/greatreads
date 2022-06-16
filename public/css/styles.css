@@ -184,6 +184,7 @@ textarea {
 .review-table {
   border: 1px solid black;
   border-radius: 5%;
+  margin-top: 15%;
 }
 
 .table {
