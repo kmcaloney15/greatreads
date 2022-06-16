@@ -101,8 +101,8 @@ router.get("/", (req, res) => {
     User.find({ username: req.session.username })
       // render a template after they are found
       .then((users) => {
-        const reviews = users[0].reviews.id()
-        console.log(users);
+        const reviews = users[0].review
+        console.log(reviews);
         res.render("users/profile.liquid", { users:users[0], reviews })
       })
       // send error as json if they aren't

@@ -161,6 +161,7 @@ button {
   border-radius: 0;
   cursor: pointer;
   text-transform: none;
+  color: #198754;
 }
 
 button:focus:not(:focus-visible) {
@@ -180,6 +181,10 @@ textarea {
   resize: vertical;
 }
 
+footer {
+  padding-top: 60px;
+  width: 100% !important;
+}
 
 .review-table {
   border: 1px solid black;

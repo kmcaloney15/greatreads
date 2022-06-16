@@ -100,7 +100,10 @@ router.post("/:id/review", (req, res) => {
       reviewBody: req.body.reviewBody,
       rating: req.body.rating,
       userPoster: req.session.username,
-    };
+      // hasRead: if (req.body.hasRead === checked){
+      //   req.body.hasRead = true}
+    }
+        
 
   Review.create(newReview)
   .then((review) => {

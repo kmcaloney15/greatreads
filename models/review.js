@@ -22,6 +22,7 @@ const reviewSchema = new Schema({
   userPoster: String,
   reviewBody: String,
   rating: String,
+  hasRead: Boolean,
 }
 , {
   timestamps:true
