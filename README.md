@@ -30,7 +30,7 @@ My proposed ERD for the project *(entity relationship diagram)*
 
 
 ## Route Table:
- ![Route Table](./img/routes-path.png) <br\>
+ ![Route Table](./img/routes-path.png)
 List of the routes I used.
 
 ## Technologies Used:
