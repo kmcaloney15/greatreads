@@ -51,6 +51,7 @@ List of the routes I used.
 - [ ] Create user bookshelves on their profile pages
 - [ ] Toggle login and logout in the nav bar depending on if a user is currently logged in or not
 - [ ] Restrict users to only be able to edit their own reviews
+- [ ] Add show more/less to collapse the book descriptions
 - [ ] Connect a book api 
 - [ ] Create a search feature to be able to search for any book to review in the book api database
 
