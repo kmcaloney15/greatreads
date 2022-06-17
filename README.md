@@ -47,5 +47,6 @@ List of the routes I used.
 
 ## Stretch goals / ICE BOX:
 - [ ] Create Author pages to link with Books
+- [ ] Use stars to to measure the rating instead of numbers
 - [ ] Create user bookshelves on their profile pages
 - [ ] Connect a book api 

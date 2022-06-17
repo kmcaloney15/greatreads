@@ -186,6 +186,10 @@ footer {
   width: 100% !important;
 }
 
+.card-body {
+  width: 30rem;
+}
+
 .review-table {
   border: 1px solid black;
   border-radius: 5%;
