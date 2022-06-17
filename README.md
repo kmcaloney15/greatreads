@@ -39,6 +39,7 @@ List of the routes I used.
 - Mongodb
 - Node.js
 - Express
+- Liquid
 
 ## MVP Requirements:
 - Full CRUD *(Create, Read, Update, and Delete)* application
@@ -46,7 +47,7 @@ List of the routes I used.
 
 ## Stretch goals:
 - [ ] Create Author pages to link with Books
-- [ ] Use stars to to measure the rating instead of numbers
+- [ ] Use stars to to measure the rating instead of numbers and show average rating for book
 - [ ] Create user bookshelves on their profile pages
 - [ ] Connect a book api 
 
