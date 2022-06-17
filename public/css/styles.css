@@ -200,6 +200,14 @@ footer {
   border-color: #dee2e6;
 }
 
+.library-box {
+  display: grid;
+  grid-template-columns: 3fr 3fr 3fr ;
+
+
+
+}
+
 .image {
   border: 1px solid #ddd;
   border-radius: 10px;

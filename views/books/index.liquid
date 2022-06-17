@@ -1,7 +1,7 @@
 {% layout "layout.liquid" %} {% block content %}
     <div>
         <h1 class="fw-bolder mb-1">Library</h1>
-        <div class="library-box flexbox">
+        <div class="library-box ">
             {% for book in books %}
                 <article>
                     <a href="/books/{{ book._id }}">
