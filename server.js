@@ -11,6 +11,7 @@ const UserRouter = require("./controllers/usersC.js")
 const ReviewRouter = require("./controllers/reviewsC.js")
 const session = require("express-session")
 const MongoStore = require("connect-mongo") //what connects to the mongo database
+const rowdy = require('rowdy-logger')
 
 
 /////////////////////////////////////////////////
@@ -39,6 +40,7 @@ app.use(
   })
 )
 
+let rowdyResults = rowdy.begin(app)
 
 ////////////////////////////////////////////
 // Routes (Root Route)
@@ -57,5 +59,6 @@ app.get("/", (req, res) => {
 //////////////////////////////////////////////
 const PORT = process.env.PORT; // variable port that I'm pulling from the .env - this way you don't have to call it everytime you want to use it
 app.listen(PORT, () => {
+  rowdyResults.print()
   console.log(`Now listening on port ${PORT}`);
 });

@@ -30,7 +30,8 @@ My proposed ERD for the project *(entity relationship diagram)*
 
 
 ## Route Table:
- *pull from morgan in terminal*
+ ![Route Table](./img/routes-path.png)
+List of the routes I used.
 
 ## Technologies Used:
 - JavaScript
