@@ -34,7 +34,8 @@
     "mongo": "^0.1.0",
     "mongoose": "^6.3.6",
     "morgan": "^1.10.0",
-    "rowdy-logger": "^1.0.2"
+    "rowdy-logger": "^1.0.2",
+    "xyz": "^4.0.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.16"
