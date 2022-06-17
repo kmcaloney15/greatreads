@@ -51,6 +51,7 @@ List of the routes I used.
 - [ ] Create user bookshelves on their profile pages
 - [ ] Restrict users to only be able to edit their own reviews
 - [ ] Connect a book api 
+- [ ] Create a search feature to be able to search for any book to review in the book api database
 
 ## ReadMe Credits:
 All book information, images and descriptions were sourced from [GoodReads.com](https://www.goodreads.com) (the real one). Special thanks to Mark Gerken and Jordan Freundlich for help with figuring out hte logic to reference the reviews. 
