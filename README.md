@@ -45,7 +45,7 @@ List of the routes I used.
 - Full CRUD *(Create, Read, Update, and Delete)* application
 - User, Books and Review pages fully built and functioning
 
-## Stretch goals:
+## Future goals:
 - [ ] Create Author pages to link with Books
 - [ ] Use stars to to measure the rating instead of numbers and show average rating for book
 - [ ] Create user bookshelves on their profile pages
