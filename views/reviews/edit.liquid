@@ -5,27 +5,29 @@
   <article>
     <h3>Username: {{ reviews.userPoster }}</h3>
     <form action="/reviews/{{reviews._id}}?_method=PUT" method="POST">
-
+        <!-- Rating -->
       <label>
         Rating:<input type="number" name="rating" class="form-control" placeholder="Enter rating from 1 - 5" value="{{reviews.rating}}" />
       </label>
 
       <div>
+          <!-- Review Text -->
         <label>
           Review:<input class="form-control" type="text" name="reviewBody" placeholder="Enter new review here"
             value="{{reviews.reviewBody}}" />
         </label>
       </div>
-
+        <!-- Edit -->
       <input type="submit" value="Edit Review" class="btn btn-primary" />
       {% comment %} {% if review.library == true %} submit {% endif %} {% endcomment %}
       {% comment %} <fieldset>
       </fieldset> {% endcomment %}
     </form>
     <br>
-    <form action="/reviews/{{ reviews._id }}?_method=DELETE" method="POST">
-      <input class="btn btn-primary" type="submit" value="Delete" />
-    </form>
+      <!-- Delete -->
+      <form action="/reviews/{{ reviews._id }}?_method=DELETE" method="POST">
+        <input class="btn btn-primary" type="submit" value="Delete" />
+      </form>
     <br><br>
 
     <a href="/books/" type="button" class="btn btn-primary">Back to Main</a>

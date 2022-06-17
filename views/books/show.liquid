@@ -55,6 +55,7 @@
                 </form>
             </div>
             <br>
+            <!-- Display Reviews -->
             <table class="table review-table">
                 <div class="review-box">
                     <legend>{{book.title}}'s Reviews:</legend>
@@ -108,17 +109,14 @@
                     </div>
                 </div>
 
-                {% comment %} {% else %}
-                <p>No reviews yet.</p>
-
-                {%elsif%} {% endcomment %}
                 {% endif%}
 
 
                 {% endfor%}
-</div>
-</table>
+                </div>
+            </table>
+        </section>
 
-</article>
+    </article>
 </div>
 {% endblock %}
