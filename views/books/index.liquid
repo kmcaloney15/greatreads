@@ -1,25 +1,25 @@
 {% layout "layout.liquid" %} {% block content %}
     <div>
-        {% comment %} <a href="/books/new"><button>Create A New Fruit</button></a> {% endcomment %}
-        <h1 class="fw-bolder mb-1">Bookshelf</h1>
-
-        {% for book in books %}
-            <article>
-                <a href="/books/{{ book._id }}">
-                <h2>
-                </h2>
-                    {% comment %} {{book.name}} - {% if book.readyToEat == true %} Ripe 
-                    {% else %} 
-                    Not Ripe 
-                    {% endif %} {% endcomment %}
-                    <form action="/books" method="POST">
-                       {% comment %} <img src="{{book.image}}"></img> {% endcomment %}
-                        <h6>{{book.title}}</h6>
-                     
-                        {% comment %} Has Read: <input type="checkbox" name="readyToEat"><br> {% endcomment %}
-                    </form>
-                </a>
-            </article>
-        {% endfor %}
+        <h1 class="fw-bolder mb-1">Library</h1>
+        <div class="library-box flexbox">
+            {% for book in books %}
+                <article>
+                    <a href="/books/{{ book._id }}">
+                    <h2>
+                    </h2>
+            
+                        <form action="/books" method="POST">
+    
+                        <div> 
+                        <img class="image" src=" {{book.image}}">
+                            {% comment %} <h6>{{book.title}}</h6> {% endcomment %}
+                        
+                            </div>
+                            {% comment %} Has Read: <input type="checkbox" name="readyToEat"><br> {% endcomment %}
+                        </form>
+                    </a>
+                </article>
+            {% endfor %}
+        </div>
     </div>
 {% endblock %}

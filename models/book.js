@@ -23,6 +23,7 @@ const booksSchema = new Schema({
   series: String,
   hasRead: Boolean,
   library: Boolean,
+  description: String,
   //reference to the review model
   reviews: [{ type: Schema.Types.ObjectId, ref: "Review"}],
   username: [{ type: Schema.Types.ObjectId, ref: "User"}], //reference to the user model,

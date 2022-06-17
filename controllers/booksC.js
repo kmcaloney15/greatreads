@@ -41,32 +41,8 @@ router.get("/", async (req, res) => {
     console.log(error)
     res.json({ error })
   })
-  //async looks for any kind of awaits - async knows it has to wait for await to finsh running before it will run it's function
-  // const books = await Book.find({}); // books.find({}) takes a long time to run
-  // await has it wait a second allowing books.find({}) to run before it runs allowing the data to be retrived from the database
-  // res.render("books/index.liquid", { books })
-//  send error as json if they aren't
 })
 
-// index route / will only show the loggin in user books
-// router.get("/", (req, res) => {
-//     // find all the books
-//     Book.find({ username: req.session.username })
-//       // render a template after they are found
-//       .then((books) => {
-//         console.log(books);
-//         res.render("books/index.liquid", { books });
-//       })
-//       // send error as json if they aren't
-//       .catch((error) => {
-//         console.log(error);
-//         res.json({ error });
-//       });
-//   });
-
-// NEW - Get // don't need here but will for reviews
-
-// DELETE - Delete
 
 // UPDATE - Put
 router.put("/:id", (req, res) => {
@@ -94,91 +70,28 @@ router.post("/:id/review", (req, res) => {
   // const username = req.session.username;
   const id = req.params.id; //book id
   // console.log("this is the " + id)
+  console.log(req.body.hasRead)
+
   // req.body.username = req.session.username
-  
-  let newReview = {
+  req.body.hasRead = !!req.body.hasRead // this switches hasRead from false to true
+    console.log(req.body.hasRead)
+    let newReview = {
       reviewBody: req.body.reviewBody,
       rating: req.body.rating,
       userPoster: req.session.username,
-      // hasRead: if (req.body.hasRead === checked){
-      //   req.body.hasRead = true}
+      hasRead: req.body.hasRead
     }
-        
+        console.log(newReview)
 
   Review.create(newReview)
   .then((review) => {
     console.log(review)
-    return Book.findByIdAndUpdate(id, { $push: { reviews: review}}, {new: true})
     review.save()
     res.redirect(`/books/`)
+    return Book.findByIdAndUpdate(id, { $push: { reviews: review}}, {new: true})
 
-  })
-
-  // Book.findById(id)
-  // .then(book => {
-  //   book.reviews.push(req.body)
-  //   return book.save()
-  // })
-  // .then(book => {
-  //   res.redirect(`/${id}`)
-  // })
-
-  // let newReview = {
-  //   reviewId: id,
-  //   reviewOwner: {
-  //     username: req.session.username,
-  //   },
-  //   reviewBody: req.body.reviewBody,
-  //   rating: 0,
-  // };
-  // User.findOne({ username: req.session.username })
-  //   .then((user) => {
-  //     // console.log(req.body)
-  //     Book.findById(id)
-  //     .then((book) => {
-  //           console.log(book, "this is a book");
-  //        book.reviews.push(req.body)
-  //        book.save()
-  //         })
-  //     .then((book) => {
-  //       res.redirect(`/books/${id}`)
-  //     })
-  //   })
-// book.review.push - review body
-  // .catch((error) => {
-  //   // console.log(error)
-  //   res.json({ error })
-  // })
+  }) 
 })
-
-// router.post("/:id", (req, res) => {
-//   // add username to req.body to track related user
-//   req.body.username = req.session.username;
-//   const id = req.params.id
-//   console.log(id)
-
-//   Book.create(req.body)
-//     //
-//     .then((newReview) => {
-//       // console.log(data)
-//       Book.findByIdAndUpdate(id, { $push: { review: newReview._id } })
-//       .then((review) => {
-//         console.log(review)
-//       })
-//       // console.log(newReview)
-//       res.render("/show/{{book.id}}")
-
-//     })
-//     // User.findOneAndUpdate({username:username}, {$push: {review: newReview}})
-//     // .then((user) => {
-//     //   // console.log(user)
-//     // })
-//     // send error as json
-//     .catch((error) => {
-//       console.log(error)
-//       res.json({ error })
-//     })
-// })
 
 // EDIT - Get
 router.get("/:id/edit", (req, res) => {
@@ -210,13 +123,6 @@ router.get("/:id", (req, res) => {
     .exec(function(err, book){
       res.render("books/show", { book});
     })
-    // .then((book) => {
-      
-    // })
-    // .catch((error) => {
-    //   console.log(error);
-    //   res.json({ error });
-    // });
 });
 
 //////////////////////////////////////////

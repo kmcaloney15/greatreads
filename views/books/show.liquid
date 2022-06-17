@@ -4,10 +4,11 @@
     <a href="/books/" type="button" class="btn btn-small">Back to Main</a>
 
     <article>
+        <img class="image" src=" {{book.image}}">
         <h2>Title: {{ book.title }}</h2>
-
         <h4>Author: {{ book.author }}</h4>
         <h6>Series: {{ book.series }}</h6>
+        <h6> Description:</h6> <p>{{book.description}}</p>
 
         <br><br>
         <!-- Review Section -->
@@ -17,10 +18,10 @@
             <div class="d-flex flex-row align-items-center">
                 <form id="add-review-form" action="/books/{{book._id}}/review" method="POST">
 
-                    {% comment %} <label>
+                  <label>
                         Read:<input type="checkbox" name="hasRead" />
 
-                    </label><br> {% endcomment %}
+                    </label><br>
 
                     <div>
 
@@ -46,6 +47,9 @@
                 <div class="review-box">
                     <legend>{{book.title}}'s Reviews:</legend>
                     {% comment %} {% if book.reviews = []%} {% endcomment %}
+                    {% if book.reviews.length == 0 %}
+                      <p>  There are no reviews yet</p>
+                    {% endif%}
                     {%for review in book.reviews%}
                     {% comment %} <tr>
                         <td>{{review.userPoster}}</td>
@@ -56,23 +60,24 @@
                     </tr> {% endcomment %}
 
 
-                    <div class="card mb-4">
-                        <div class="card-body">
-                            <p>{{review.reviewBody}}</p>
-
-                            <div class="d-flex justify-content-between">
-                                <div class="d-flex flex-row align-items-center">
-                                    <!-- where I could include profile pictures -->
-                                    {% comment %} <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(4).webp"
-                                        alt="avatar" width="25" height="25" /> {% endcomment %}
+                    {% if  book.reviews.length > 0 %}
+                        
+                        <div class="d-flex justify-content-between">
+                            
+                            <div class="card mb-4">
+                                <div class="card-body">
+                            <div class="d-flex flex-row align-items-center">
+                                <!-- where I could include profile pictures -->
+                                {% comment %} <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(4).webp"
+                                    alt="avatar" width="25" height="25" /> {% endcomment %}
                                     <p class="medium mb-0 ms-2">{{review.userPoster}}</p>
                                 </div>
                                 <div class="d-flex flex-row align-items-center">
                                     <p class="medium text-muted mb-0">Rating:</p>
                                     <i class="far fa-thumbs-up mx-2 fa-xs text-black" style="margin-top: -0.20rem;"></i>
                                     <p class="medium text-muted mb-0">{{review.rating}}</p>
-
-
+                                    
+                                    
                                     <i class="far fa-thumbs-up mx-2 fa-xs text-black" style="margin-top: -0.20rem;"></i>
                                     {% comment %} <!-- {% if username === review.userPoster%} --> {% endcomment %}
                                     <div>
@@ -84,10 +89,14 @@
                                     {% comment %} <!-- {% endif %} --> {% endcomment %}
                                 </div>
                             </div>
-                        </div>
-                    </div>
-
-
+                                    <p>{{review.reviewBody}}</p>
+                                    
+                                    
+                                </div>
+                            </div>
+                        {% endif%}
+                        
+                        
                     {% endfor%}
 
 

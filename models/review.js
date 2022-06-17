@@ -22,7 +22,7 @@ const reviewSchema = new Schema({
   userPoster: String,
   reviewBody: String,
   rating: String,
-  hasRead: Boolean,
+  hasRead: {type: Boolean, default: false,}, //set to false as default then write if checked - set value to true
 }
 , {
   timestamps:true

@@ -200,6 +200,13 @@ footer {
   border-color: #dee2e6;
 }
 
+.image {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 1px;
+  width: 200px;
+}
+
 .img-thumbnail {
   padding: 0.25rem;
   background-color: #fff;

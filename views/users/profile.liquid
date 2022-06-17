@@ -7,16 +7,18 @@
       Username:
       {{ users.username }}
       <br>
-      {% comment %} bookshelf:
-      {{users.hasRead}} {% endcomment %}
+    </div>
+    
+    <div>
+      Bookshelf:
+      {{users.hasRead}} 
     </div>
     {% comment %} <h2>
       {{ user.name }} -
 
-      {% comment %} {% if readyToEat == true %}
-      Ready to Eat
-      {% else %}
-      Not Ready to Eat
+      {% comment %} {% if hasRead == true %}
+      clicked
+     
       {% endif %}
     </h2>{% endcomment %}
 
