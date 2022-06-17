@@ -1,27 +1,38 @@
 {% layout "layout.liquid" %} {% block content %}
 <div>
 
-    <a href="/books/" type="button" class="btn btn-small">Back to Main</a>
+    <a href="/books/" type="button" class="btn btn-small" style="margin-bottom: 1rem;">Back to Main</a>
 
+    <!-- Book Info Section -->
     <article>
-        <img class="image" src=" {{book.image}}">
-        <h2>Title: {{ book.title }}</h2>
-        <h4>Author: {{ book.author }}</h4>
-        <h6>Series: {{ book.series }}</h6>
-        <h6> Description:</h6>
-        <p>{{book.description}}</p>
-
-        <br><br>
-        <!-- Review Section -->
+        <div class="container">
+            <div class="">
+                <div class="">    
+                    <img class="image" style="margin-bottom: 1rem;" src=" {{book.image}}">
+                </div>
+                <div class="">
+                    <h2>Title: {{ book.title }}</h2>
+                    <h4>Author: {{ book.author }}</h4>
+                    <div style="font-style: italic;">
+                        <h5>Series: {{ book.series }}</h5>
+                    </div><br>
+                    <h5> Description:</h5>
+                    <p>{{book.description}}</p>
+                </div>
+            </div>
+        </div> 
+        <br>
+             <!-- Review Section -->
         <section class="book-reviews">
-            <h2>Reviews</h2>
+            <div style="margin-bottom: 1rem;">
+                <h2>Reviews</h2>
+            </div>
             <!-- Comment form -->
             <div class="d-flex flex-row align-items-center">
                 <form id="add-review-form" action="/books/{{book._id}}/review" method="POST">
                     {% comment %}
                     <label>
                         Read:<input type="checkbox" name="hasRead" />
-
                     </label><br> {% endcomment %}
 
                     <div id="rating">
@@ -51,7 +62,7 @@
                     {% if book.reviews.length == 0 %}
                     <p> There are no reviews yet</p>
                     {% endif%}
-                    
+
                     {%for review in book.reviews%}
 
                     {% if book.reviews.length > 0 %}
