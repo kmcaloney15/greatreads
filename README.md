@@ -52,4 +52,4 @@ List of the routes I used.
 - [ ] Connect a book api 
 
 ## ReadMe Credits:
-All book information, images and descriptions were sourced from GoodReads.com (the real one). Special thanks to Mark Gerken and Jordan Freundlich for help with figuring out hte logic to reference the reviews. 
+All book information, images and descriptions were sourced from [GoodReads.com](https://www.goodreads.com) (the real one). Special thanks to Mark Gerken and Jordan Freundlich for help with figuring out hte logic to reference the reviews. 
