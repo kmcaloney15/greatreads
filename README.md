@@ -30,7 +30,7 @@ My proposed ERD for the project *(entity relationship diagram)*
 
 
 ## Route Table:
- ![Route Table](./img/routes-path.png)
+ ![Route Table](./img/routes-path.png) <br\>
 List of the routes I used.
 
 ## Technologies Used:
@@ -40,12 +40,11 @@ List of the routes I used.
 - Node.js
 - Express
 
-
 ## MVP Requirements:
 - Full CRUD *(Create, Read, Update, and Delete)* application
 - User, Books and Review pages fully built and functioning
 
-## Stretch goals / ICE BOX:
+## Stretch goals:
 - [ ] Create Author pages to link with Books
 - [ ] Use stars to to measure the rating instead of numbers
 - [ ] Create user bookshelves on their profile pages
