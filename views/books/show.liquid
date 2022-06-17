@@ -51,6 +51,7 @@
                     {% if book.reviews.length == 0 %}
                     <p> There are no reviews yet</p>
                     {% endif%}
+                    
                     {%for review in book.reviews%}
 
                     {% if book.reviews.length > 0 %}
@@ -64,21 +65,18 @@
                             <div class="row d-flex justify-content-center">
                                 {% comment %} <div class="col-md-8 col-lg-6"> {% endcomment %}
                                     <!-- <div class="card shadow-0 border" style="background-color: #f0f2f5;"> -->
-                                        <!-- <div class="card-body p-4"> -->
-
-
-                                            <div class="card mb-4">
+                                            <div class="card">
                                                 <div class="card-body">
                                                     <p>{{review.reviewBody}}</p>
 
                                                     <div class="d-flex justify-content-between">
-                                                        <div class="d-flex flex-row align-items-center">
+                                                        <div class="d-flex flex-row align-items-center" id="userPoster">
                                                             <!-- <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(4).webp"
                                                                 alt="avatar" width="25" height="25" /> -->
                                                             <p class="medium mb-0 ms-2">{{review.userPoster}}</p>
                                                         </div>
-                                                        <div class="d-flex flex-row align-items-center">
-                                                            <p class="medium text-muted mb-0">{{review.rating}}</p>
+                                                        <div class="d-flex flex-row align-items-center" id="review-rating">
+                                                            <p class="medium text-muted mb-0">Rating: {{review.rating}}</p>
                                                             <i class="far fa-thumbs-up mx-2 fa-xs text-black"
                                                                 style="margin-top: -0.16rem;"></i>
                                                                 <div>

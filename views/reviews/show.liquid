@@ -1,5 +1,5 @@
 {% layout "layout.liquid" %} {% block content %}
-    <div>
+    <div class="d-flex flex-row align-items-center"></div>
         <h1 class="fw-bolder mb-1">Reviews</h1>    
    
         <article>
@@ -16,11 +16,13 @@
                     {% comment %} <fieldset>
                 </fieldset> {% endcomment %}
             
-
+        <div class="edit-btn">
             <a href="/reviews/{{ reviews._id }}/edit"><button>Edit</button></a>
-            <br><br>
-               
+        </div>
+        <br>
+              <div class="delete-btn">
             <a href="/reviews/" type="button" class="btn btn-primary">Back to Main</a>
+        </div> 
         </article>
     </div>
 {% endblock %}

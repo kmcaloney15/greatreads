@@ -1,18 +1,18 @@
 {% layout "layout.liquid" %} {% block content %}
-<div>
+<div class="d-flex flex-row align-items-center"></div>
   <h1 class="fw-bolder mb-1">Reviews</h1>
 
   <article>
-    <h2>Username: {{ reviews.userPoster }}</h2>
+    <h3>Username: {{ reviews.userPoster }}</h3>
     <form action="/reviews/{{reviews._id}}?_method=PUT" method="POST">
 
       <label>
-        Rating:<input type="number" name="rating" placeholder="Enter rating from 1 - 5" value="{{reviews.rating}}" />
+        Rating:<input type="number" name="rating" class="form-control" placeholder="Enter rating from 1 - 5" value="{{reviews.rating}}" />
       </label>
 
       <div>
         <label>
-          Review:<input type="text" name="reviewBody" placeholder="Enter new review here"
+          Review:<input class="form-control" type="text" name="reviewBody" placeholder="Enter new review here"
             value="{{reviews.reviewBody}}" />
         </label>
       </div>
@@ -21,8 +21,8 @@
       {% comment %} {% if review.library == true %} submit {% endif %} {% endcomment %}
       {% comment %} <fieldset>
       </fieldset> {% endcomment %}
-
     </form>
+    <br>
     <form action="/reviews/{{ reviews._id }}?_method=DELETE" method="POST">
       <input class="btn btn-primary" type="submit" value="Delete" />
     </form>
