@@ -7,7 +7,7 @@ This project is modeled after GoodReads, a blog site that allows users to review
 
 ## User Story:
 
-- Users should be able to create their own profiles to be able to view the books to review them.
+- Users should be able to create their own profiles to get access to the library.
 - Users should also be able to view the individual book pages to read, edit and delete reviews and ratings.
 
 
@@ -49,6 +49,7 @@ List of the routes I used.
 - [ ] Create Author pages to link with Books
 - [ ] Use stars to to measure the rating instead of numbers and show average rating for book
 - [ ] Create user bookshelves on their profile pages
+- [ ] Toggle login and logout in the nav bar depending on if a user is currently logged in or not
 - [ ] Restrict users to only be able to edit their own reviews
 - [ ] Connect a book api 
 - [ ] Create a search feature to be able to search for any book to review in the book api database

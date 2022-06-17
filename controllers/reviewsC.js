@@ -32,14 +32,6 @@ router.get("/reviews", (req, res) => {
   res.render("reviews/index.liquid");
 });
 
-// Index Route / The Async/Await Method
-// using this so I don't need to log in everytime
-// router.get("/", async (req, res) => {
-//   //async looks for any kind of awaits - async knows it has to wait for await to finsh running before it will run it's function
-//   const reviews = await Review.find({}); // Reviews.find({}) takes a long time to run
-//   // await has it wait a second allowing Reviews.find({}) to run before it runs allowing the data to be retrived from the database
-//   res.render("reviews/index.liquid", { reviews });
-// });
 
 //index route / will only show the loggin in user Reviews
 router.get("/", (req, res) => {
