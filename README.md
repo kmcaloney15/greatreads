@@ -7,8 +7,8 @@ This project is modeled after GoodReads, a blog site that allows users to review
 
 ## User Story:
 
-- Users should be able to create their own profiles where they can add books to their bookshelves and review them.
-- Users should also be able to view the individual book pages to read reviews and ratings.
+- Users should be able to create their own profiles to be able to view the books to review them.
+- Users should also be able to view the individual book pages to read, edit and delete reviews and ratings.
 
 
 ## Wireframes:
