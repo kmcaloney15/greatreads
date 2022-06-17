@@ -50,3 +50,6 @@ List of the routes I used.
 - [ ] Use stars to to measure the rating instead of numbers
 - [ ] Create user bookshelves on their profile pages
 - [ ] Connect a book api 
+
+## ReadMe Credits:
+All book information, images and descriptions were sourced from GoodReads.com (the real one). Special thanks to Mark Gerken and Jordan Freundlich for help with figuring out hte logic to reference the reviews. 
