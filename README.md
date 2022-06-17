@@ -49,6 +49,7 @@ List of the routes I used.
 - [ ] Create Author pages to link with Books
 - [ ] Use stars to to measure the rating instead of numbers and show average rating for book
 - [ ] Create user bookshelves on their profile pages
+- [ ] Restrict users to only be able to edit their own reviews
 - [ ] Connect a book api 
 
 ## ReadMe Credits:
