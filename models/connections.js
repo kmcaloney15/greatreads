@@ -8,7 +8,7 @@ const mongoose = require("mongoose");
 // Database Connection
 /////////////////////////////////////////////
 // Setup inputs for our connect function
-const MONGODB_URI = process.env.MONGODB_URI;
+const MONGODB_URI = process.env.MONGODB_URI
 const CONFIG = {
   useNewURLParser: true,
   useUnifiedTopology: true,
