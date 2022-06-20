@@ -4,7 +4,7 @@
 
 This project is modeled after GoodReads, a blog site that allows users to review books that they have read and add them to their own digital bookshelf.
 
-[Live blog](https://great-reads-project.herokuapp.com)
+[GreatReads Link](https://great-reads-project.herokuapp.com)
 
 
 ## User Story:
