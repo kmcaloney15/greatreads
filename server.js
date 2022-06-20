@@ -58,7 +58,7 @@ app.get("/", (req, res) => {
 // Server Listener
 //////////////////////////////////////////////
 const PORT = process.env.PORT; // variable port that I'm pulling from the .env - this way you don't have to call it everytime you want to use it
-app.listen(PORT, () => {
+app.listen(process.env.PORT || 3400, () => {
   rowdyResults.print()
   console.log(`Now listening on port ${PORT}`);
 });
