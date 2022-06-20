@@ -10,7 +10,7 @@ const BookRouter = require("./controllers/booksC.js")
 const UserRouter = require("./controllers/usersC.js")
 const ReviewRouter = require("./controllers/reviewsC.js")
 const session = require("express-session")
-const MongoStore = require("connect-mongo") //what connects to the mongo database
+// const MongoStore = require("connect-mongo") //what connects to the mongo database
 const rowdy = require('rowdy-logger')
 
 
@@ -33,8 +33,8 @@ app.use(express.static("public")) // serve files from public statically
 // middleware to setup session
 app.use(
   session({
-    secret: process.env.SECRET, //SECRET=IKnowSomeThingYouDontKnow
-    store: MongoStore.create({ mongoUrl: process.env.MONGODB_URI }),
+    secret: process.env.SECRET, 
+    // store: MongoStore.create({ mongoUrl: process.env.MONGODB_URI }),
     saveUninitialized: true,
     resave: false,
   })
